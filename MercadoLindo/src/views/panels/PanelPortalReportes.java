@@ -1,89 +1,76 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextPane;
-
 public class PanelPortalReportes extends Paneles {
 
 //	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
-	
+
 	private JPanel panelTituloLogIn = new JPanel();
-	
+
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JLabel lblTituloReportes = new JLabel("Portal Reportes - Mercado Lindo");
-	private final JLabel lblMasVendido = new JLabel("<html>Obtener el art\u00EDculo m\u00E1s comercializado  a partir del nombre de una empresa:</html>");
-	private final JLabel lblUltimas5Compras = new JLabel("<html>A partir del dni de un cliente, obtener las \u00FAltimas 5 compras realizadas mostrando:  </html>");
-		
+	private final JLabel lblMasVendido = new JLabel(
+			"<html>Obtener el art\u00EDculo m\u00E1s comercializado  a partir del nombre de una empresa:</html>");
+	private final JLabel lblUltimas5Compras = new JLabel(
+			"<html>A partir del dni de un cliente, obtener las \u00FAltimas 5 compras realizadas mostrando:  </html>");
+
 	private final JButton btnSalir = new JButton("Salir");
-	
+
 	private final JButton btnDescargar_Mayores10mil = new JButton("Descargar reporte");
-	
+
 	private final JTextPane textPane_MasVendido = new JTextPane();
 	private final JButton btnDescargar_MasVendido = new JButton("Descargar");
-	
+
 	private final JTextPane textPane_Ultimas5Compras = new JTextPane();
 	private final JButton btnDescargar_Ultimas5Compras = new JButton("Descargar");
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelPortalReportes() {
-		
+
 //		evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-		
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
+
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		add(panelTituloLogIn);
 		panelTituloLogIn.setLayout(null);
 		lblTituloReportes.setBounds(10, 0, 303, 29);
-		
+
 		lblTituloReportes.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelTituloLogIn.add(lblTituloReportes);
-		
-	
+
 		panelBotones.setBounds(0, 253, 450, 47);
 		add(panelBotones);
 		panelBotones.setLayout(null);
 		btnSalir.setBounds(387, 11, 53, 23);
 		panelBotones.add(btnSalir);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 
 		panelCentral.setBounds(0, 40, 450, 214);
 		add(panelCentral);
 		panelCentral.setLayout(null);
-		
-		JLabel lblMayores10mil = new JLabel("<html>Obtener el nombre y dni de los clientes que realizaron compras por m\u00E1s de $10.000</html>");
+
+		JLabel lblMayores10mil = new JLabel(
+				"<html>Obtener el nombre y dni de los clientes que realizaron compras por m\u00E1s de $10.000</html>");
 		lblMayores10mil.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMayores10mil.setBounds(10, 11, 224, 75);
 		panelCentral.add(lblMayores10mil);
@@ -92,37 +79,39 @@ public class PanelPortalReportes extends Paneles {
 		panelCentral.add(btnDescargar_Mayores10mil);
 		lblMasVendido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMasVendido.setBounds(10, 49, 224, 75);
-		
+
 		panelCentral.add(lblMasVendido);
 		textPane_MasVendido.setBounds(244, 74, 115, 22);
-		
+
 		panelCentral.add(textPane_MasVendido);
 		lblUltimas5Compras.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUltimas5Compras.setBounds(10, 89, 224, 75);
-		
+
 		panelCentral.add(lblUltimas5Compras);
 		textPane_Ultimas5Compras.setBounds(244, 118, 115, 22);
-		
+
 		panelCentral.add(textPane_Ultimas5Compras);
-		
+
 		JButton btnDescargar_MasVendido = new JButton("Descargar");
 		btnDescargar_MasVendido.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnDescargar_MasVendido.setBounds(369, 73, 81, 23);
 		panelCentral.add(btnDescargar_MasVendido);
-		
+
 		JButton btnDescargar_Ultimas5Compras = new JButton("Descargar");
 		btnDescargar_Ultimas5Compras.setBounds(369, 117, 81, 23);
 		panelCentral.add(btnDescargar_Ultimas5Compras);
-		System.out.println("esto");
+//		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -263,7 +252,7 @@ public class PanelPortalReportes extends Paneles {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**

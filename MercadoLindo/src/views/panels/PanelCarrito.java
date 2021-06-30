@@ -1,34 +1,21 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.SystemColor;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
 // ActionListener es "evento", que es el que declaramos en el new
 
 public class PanelCarrito extends Paneles {
-
-//	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
 
 	private JPanel panelTituloMiCarrito = new JPanel();
 	private JLabel lblTituloMiCarrito = new JLabel("mi Carrito");
@@ -42,74 +29,79 @@ public class PanelCarrito extends Paneles {
 	private JButton btnVolverAlaTienda = new JButton("volver a la Tienda");
 	private JButton btnCambiarTarjeta = new JButton("Cambiar tarjeta");
 	private final JButton btnVaciarCarrito = new JButton("Vaciar carrito");
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelCarrito() {
 
-		//evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-		
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
 
-		panelTituloMiCarrito.setBounds(0, 0, 450, 40);
-		add(panelTituloMiCarrito);
-		panelTituloMiCarrito.setLayout(null);
 		lblTituloMiCarrito.setBounds(10, 0, 122, 29);
-
 		lblTituloMiCarrito.setFont(new Font("Arial", Font.PLAIN, 12));
-		panelTituloMiCarrito.add(lblTituloMiCarrito);
 
-		JButton btnVolverAlaTienda = new JButton("volver a la Tienda");
 		btnVolverAlaTienda.addActionListener(evento);
 		btnVolverAlaTienda.setBounds(276, 17, 122, 23);
-		panelTituloMiCarrito.add(btnVolverAlaTienda);
+
 		btnSalirMiCarrito.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnSalirMiCarrito.setBounds(397, 17, 53, 23);
 
+		panelTituloMiCarrito.setBounds(10, 0, 450, 40);
+		panelTituloMiCarrito.setLayout(null);
+		panelTituloMiCarrito.add(lblTituloMiCarrito);
+		panelTituloMiCarrito.add(btnVolverAlaTienda);
 		panelTituloMiCarrito.add(btnSalirMiCarrito);
 
-		panelBotonesMiCarrito.setBounds(0, 253, 450, 47);
-		add(panelBotonesMiCarrito);
+		panelBotonesMiCarrito.setBounds(10, 253, 450, 47);
 		panelBotonesMiCarrito.setLayout(null);
-		btnComprarCarrito.addActionListener(evento);
-		btnComprarCarrito.addActionListener(evento);
-
-		btnComprarCarrito.setBounds(305, 24, 135, 23);
 		panelBotonesMiCarrito.add(btnComprarCarrito);
-		btnCambiarDomicilio.addActionListener(evento);
-		btnCambiarDomicilio.addActionListener(evento);
 
+		btnComprarCarrito.addActionListener(evento);
+		btnComprarCarrito.setBounds(305, 24, 135, 23);
+
+		btnVaciarCarrito.addActionListener(evento);
+		btnVaciarCarrito.setBounds(305, 0, 135, 23);
+
+		btnCambiarDomicilio.addActionListener(evento);
 		btnCambiarDomicilio.setBounds(10, 11, 127, 23);
+
+		btnCambiarTarjeta.addActionListener(evento);
+		btnCambiarTarjeta.setBounds(157, 11, 127, 23);
+
+		panelBotonesMiCarrito.add(btnCambiarTarjeta);
+		panelBotonesMiCarrito.add(btnVaciarCarrito);
 		panelBotonesMiCarrito.add(btnCambiarDomicilio);
 
-		JButton btnCambiarTarjeta = new JButton("Cambiar tarjeta");
-		btnCambiarTarjeta.setBounds(157, 11, 127, 23);
-		panelBotonesMiCarrito.add(btnCambiarTarjeta);
-		btnVaciarCarrito.setBounds(305, 0, 135, 23);
-		
-		panelBotonesMiCarrito.add(btnVaciarCarrito);
-
-		panelCentralMiCarrito.setBounds(0, 40, 450, 214);
-		add(panelCentralMiCarrito);
+		panelCentralMiCarrito.setBounds(10, 40, 450, 214);
 		panelCentralMiCarrito.setLayout(null);
-		scrollPane.setBounds(0, 0, 450, 214);
-
 		panelCentralMiCarrito.add(scrollPane);
 
 		table.setBounds(0, 0, 450, 214);
+
 		scrollPane.add(table);
+		scrollPane.setBounds(10, 0, 450, 214);
 
 		btnComprarCarrito.addActionListener(evento);
 		btnCambiarDomicilio.addActionListener(evento);
-		System.out.println("esto");
-		this.setVisible(true);
+
+		add(panelTituloMiCarrito);
+		add(panelCentralMiCarrito);
+		add(panelBotonesMiCarrito);
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -203,12 +195,6 @@ public class PanelCarrito extends Paneles {
 	 */
 	public void setPanelCentral(JPanel panelCentral) {
 		this.panelCentralMiCarrito = panelCentral;
-	}
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**

@@ -13,7 +13,6 @@ package main;
 import java.awt.EventQueue;
 
 import controller.PrincipalController;
-import excepcions.MensajesExceptions;
 
 /**
  * Clase que inicia el programa, podria realizarse en el frame pero de esta
@@ -36,12 +35,9 @@ public class Base {
 			public void run() {
 				try {
 					PrincipalController principal = new PrincipalController();
-
 					principal.initPanel();
-
 				} catch (Exception e) {
 					e.printStackTrace();
-//					MensajesExceptions.mostrarMensaje(e);
 				}
 			}
 		});

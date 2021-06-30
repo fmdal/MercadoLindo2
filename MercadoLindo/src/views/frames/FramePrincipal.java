@@ -10,26 +10,22 @@
  */
 package views.frames;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.SystemColor;
-import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controller.PanelTiendaPrincipalControlador;
 import events.PanelTiendaPrincipalEventos;
 import events.PrincipalEventos;
 import views.panels.PanelTiendaPrincipal;
-import views.panels.TestPanel;
-import javax.swing.SwingConstants;
 
 /**
  * Clase contenedora del frame general del sistema. Todas las ventanas van a ser
@@ -43,82 +39,64 @@ import javax.swing.SwingConstants;
 public class FramePrincipal extends JFrame {
 	/**
 	 * Numero de version de la clase
+	 * 
 	 * @var long serialVersionUID
 	 */
 	private static final long serialVersionUID = 2964753219416236098L;
-	/**
-	 * JPanel que se va a cargar
-	 *
-	 * @var JPanel contentPane
-	 */
+
 	private JButton btnAceptar;
-	
-//	private JPanel contentPane;
-	
 	private String titulo;
 	private PrincipalEventos evento;
-//	private PanelTiendaPrincipal panelTienda;
-	private JPanel panelContenedor = new JPanel(); //*****!
-	private PanelTiendaPrincipal var;
+	private JPanel panelContenedor = new JPanel();
 
 	/**
 	 * Constructor de la clase. Create the frame.
 	 */
 	public FramePrincipal() {
 
-		var = new PanelTiendaPrincipal();
-		var.getBtnBuscarArticulo().setHorizontalAlignment(SwingConstants.CENTER);
-		var.getBtnBuscarArticulo().setBounds(382, 17, 87, 18);
-		var.getBtnSalir().setHorizontalAlignment(SwingConstants.CENTER);
-		var.getBtnSalir().setBounds(352, 11, 88, 23);
-		var.getBtnLogIn().setBounds(130, 11, 174, 23);
-		var.getTable().setBounds(54, 11, 476, 210);
-		var.getPanelCentral().setBounds(0, 40, 450, 214);
-		var.getPanelBotones().setBounds(0, 253, 479, 47);
-		var.getPanelTituloTienda().setBounds(0, 0, 450, 40);
-		var.getPanelTitulo().setBounds(0, 0, 479, 40);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 505, 354);
-		var.setBorder(new EmptyBorder(5, 5, 5, 5));
-		var.setLayout(null);
-		var.getEvento();	//que mierda iba aca	"var.getE.."?
+		setBounds(100, 100, 500, 350);
+
+		panelContenedor.setBorder(new LineBorder(SystemColor.desktop));
+		panelContenedor.setBackground(new Color(135, 206, 235));
+		panelContenedor.setLayout(new CardLayout(0, 0));
+
 		this.evento = new PrincipalEventos(this);
-		this.init();
+
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {
+
+				PanelTiendaPrincipalControlador pTPC = new PanelTiendaPrincipalControlador();
+				((PanelTiendaPrincipal) pTPC.getVista())
+						.setListaArticulos(evento.getDatos().getModelo().getArticulos());
+
+				getContentPane().add((Component) pTPC.initPanel());
+				((PanelTiendaPrincipalEventos) pTPC.getVista().getEvento()).setFrame((FramePrincipal) getThis());
+
+				// FIXME no tengo ni idea de porque esto
+				JPanel panel = new JPanel();
+				panelContenedor.add(panel);
+			}
+		});
 	}
 
 	/**
 	 * Esta funcion inicializa todos los elementos del frame y lo muestra.
 	 */
-	private void init() {
+	public void init() {
 		evento.setVista(this);
-        
-		setContentPane(var);
+
+		setContentPane(panelContenedor);
 		setVisible(true);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * @return el dato de titulo
 	 */
 	public String getTitulo() {
 		return titulo;
 	}
-
-//	/**
-//	 * @return el dato de contentPane
-//	 */
-//	@Override
-//	public JPanel getContentPane() {
-//		return contentPane;
-//	}
 
 	/**
 	 * @return el dato de evento
@@ -151,8 +129,12 @@ public class FramePrincipal extends JFrame {
 	/**
 	 * @return el dato de var
 	 */
-	public PanelTiendaPrincipal getVar() {
-		return var;
+	public JPanel getVar() {
+		return panelContenedor;
 	}
-	
+
+	public JFrame getThis() {
+		return this;
+
+	}
 }

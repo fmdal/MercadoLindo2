@@ -1,38 +1,22 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.SystemColor;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextPane;
-import javax.swing.JComboBox;
-
 public class PanelIngTarjetas extends Paneles {
 
 //	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
-	
+
 	private JPanel panelIngTarjeta = new JPanel();
 	private JLabel lblTituloRegistrarse = new JLabel("Ingresar tarjetas - Mercado Lindo");
 	private JPanel panelBotones = new JPanel();
@@ -45,43 +29,41 @@ public class PanelIngTarjetas extends Paneles {
 	private final JLabel lblMarcaTarjeta = new JLabel("Marca de tarjeta");
 	private final JLabel lblTipoTarjeta = new JLabel("Tipo de tarjeta");
 	private JComboBox comboBoxTipoTarjeta = new JComboBox();
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelIngTarjetas() {
-		
+
 //		evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-		
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
+
 		panelIngTarjeta.setBounds(0, 0, 450, 40);
 		add(panelIngTarjeta);
 		panelIngTarjeta.setLayout(null);
 		lblTituloRegistrarse.setBounds(10, 0, 198, 29);
-		
+
 		lblTituloRegistrarse.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelIngTarjeta.add(lblTituloRegistrarse);
-		
-	
+
 		panelBotones.setBounds(0, 253, 450, 47);
 		add(panelBotones);
 		panelBotones.setLayout(null);
 		btnSalirTarjeta.setBounds(387, 11, 53, 23);
 		panelBotones.add(btnSalirTarjeta);
 		btnSalirTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 
 		panelCentral.setBounds(0, 40, 450, 214);
 		add(panelCentral);
 		panelCentral.setLayout(null);
-		
+
 		JTextPane textPane_nroTarjeta = new JTextPane();
 		textPane_nroTarjeta.setBounds(135, -1, 119, 22);
 		panelCentral.add(textPane_nroTarjeta);
-		
+
 		JLabel lblNumeroTarjeta = new JLabel("Numero de tarjeta");
 		lblNumeroTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumeroTarjeta.setBounds(20, 0, 105, 22);
@@ -90,33 +72,34 @@ public class PanelIngTarjetas extends Paneles {
 		panelCentral.add(btnAceptarTarjeta);
 		btnIngresarTarjetaOK.addActionListener(evento);
 		btnIngresarTarjetaOK.setBounds(40, 98, 176, 23);
-		
+
 		panelCentral.add(btnIngresarTarjetaOK);
 		textPane_marcaTarjeta.setBounds(135, 32, 119, 22);
-		
+
 		panelCentral.add(textPane_marcaTarjeta);
 		lblMarcaTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarcaTarjeta.setBounds(20, 33, 105, 22);
-		
+
 		panelCentral.add(lblMarcaTarjeta);
 		lblTipoTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipoTarjeta.setBounds(20, 65, 105, 22);
-		
+
 		panelCentral.add(lblTipoTarjeta);
-		
+
 		JComboBox comboBoxTipoTarjeta = new JComboBox();
 		comboBoxTipoTarjeta.setBounds(135, 65, 119, 22);
 		panelCentral.add(comboBoxTipoTarjeta);
 		comboBoxTipoTarjeta.addItem("Credito");
 		comboBoxTipoTarjeta.addItem("Debito");
 		comboBoxTipoTarjeta.addItem("Prepaga");
-		System.out.println("esto");
+//		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -174,7 +157,6 @@ public class PanelIngTarjetas extends Paneles {
 	 * @return the btnAceptar
 	 */
 
-
 	/**
 	 * @return the panelCentral
 	 */
@@ -192,7 +174,7 @@ public class PanelIngTarjetas extends Paneles {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**

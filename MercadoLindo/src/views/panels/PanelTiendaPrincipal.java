@@ -1,117 +1,121 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.ScrollPane;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
+import javax.swing.JTable;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 import dominio.Articulo;
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
-import javax.swing.JTextPane;
-
 public class PanelTiendaPrincipal extends Paneles {
 
-//	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
+	/**
+	 * @var long - serialVersionUID
+	 */
+	private static final long serialVersionUID = -2361110886891829996L;
+
 	private ArrayList<Articulo> listaArticulos;
-	
+
 	private JPanel panelTituloTienda = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	private JLabel lblTitulo = new JLabel("Tienda Mercado Lindo");
-		
-	private final JButton btnVerCarritoDeTienda = new JButton("ver Carrito");
-	
-	private final JButton btnBuscarArticulo = new JButton("Buscar ");
-	private final JTextPane textPane_buscar = new JTextPane();
-	
-	private final JButton btnSalir = new JButton("Salir");
-	private final JButton btnLogIn = new JButton("Iniciar Sesion");
-	
-	private final JTable table = new JTable();
 
-	
+	private JLabel lblTitulo = new JLabel("Tienda Mercado Lindo");
+
+	private JTextPane textPane_buscar = new JTextPane();
+
+	private ScrollPane scrollPane = new ScrollPane();
+
+	private JButton btnBuscarArticulo = new JButton("Buscar ");
+	private JButton btnVerCarritoDeTienda = new JButton("ver Carrito");
+	private JButton btnSalir = new JButton("Salir");
+	private JButton btnLogIn = new JButton("Iniciar Sesion");
+
+	private JTable table;
+	private String[] columnas = { "Nombre", "Descripcion", "Categoria", "Cantidad", "Precio", "Agregar" };
+	private DefaultTableModel tableModel = new DefaultTableModel(columnas, 0);
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelTiendaPrincipal() {
-		
-//		evento.setVista(this);
+
 		evento = new PanelTiendaPrincipalEventos(this);
-		
-		setBorder(new LineBorder(SystemColor.desktop));
+
 		setLayout(null);
-		
-		panelTituloTienda.setBounds(0, 0, 450, 40);
-		add(panelTituloTienda);
-		panelTituloTienda.setLayout(null);
+	}
+
+	@Override
+	public void init() {
+
 		lblTitulo.setBounds(10, 0, 132, 29);
-		
 		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 12));
-		panelTituloTienda.add(lblTitulo);
-		
-		JButton btnVerCarritoDeTienda = new JButton("ver Carrito");
+
 		btnVerCarritoDeTienda.addActionListener(evento);
 		btnVerCarritoDeTienda.setBounds(152, 17, 89, 18);
+
+		textPane_buscar.setBounds(251, 15, 128, 20);
+
+		panelTituloTienda.setBounds(10, 0, 450, 40);
+		panelTituloTienda.setLayout(null);
+		panelTituloTienda.add(textPane_buscar);
+		panelTituloTienda.add(lblTitulo);
 		panelTituloTienda.add(btnVerCarritoDeTienda);
-		btnBuscarArticulo.addActionListener(evento);
+		panelTituloTienda.add(btnBuscarArticulo);
+
 		btnBuscarArticulo.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBuscarArticulo.setBounds(382, 17, 68, 18);
-		
-		panelTituloTienda.add(btnBuscarArticulo);
-		
-		JTextPane textPane_buscar = new JTextPane();
-		textPane_buscar.setBounds(251, 15, 128, 20);
-		panelTituloTienda.add(textPane_buscar);
-		
-	
-		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
-		panelBotones.setLayout(null);
-		btnSalir.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalir);
-		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnLogIn.setBounds(282, 11, 95, 23);
-		
-		panelBotones.add(btnLogIn);
-		
+		btnBuscarArticulo.addActionListener(evento);
 
-		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
-		panelCentral.setLayout(null);
-		
-		ScrollPane scrollPane = new ScrollPane();
-		scrollPane.setBounds(0, 0, 450, 214);
-		panelCentral.add(scrollPane);
+		btnSalir.setBounds(387, 11, 53, 23);
+		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSalir.addActionListener(evento);
+
+		btnLogIn.setBounds(282, 11, 95, 23);
+		btnLogIn.addActionListener(evento);
+
+		panelBotones.setBounds(10, 253, 450, 47);
+		panelBotones.setLayout(null);
+		panelBotones.add(btnSalir);
+		panelBotones.add(btnLogIn);
+
+		for (Articulo articulo : listaArticulos) {
+
+			Object[] data = { articulo.getNombre(), articulo.getDescripcion(), articulo.getCantidad(),
+					articulo.getCantidad(), articulo.getPrecio() };
+
+			tableModel.addRow(data);
+		}
+
+		table = new JTable(tableModel);
 		table.setBounds(0, 0, 450, 214);
-		
+
+		scrollPane.setBounds(0, 0, 450, 214);
 		scrollPane.add(table);
-		System.out.println("esto");
+
+		panelCentral.add(scrollPane);
+		panelCentral.setBounds(10, 40, 450, 214);
+		panelCentral.setLayout(null);
+
+		add(panelCentral);
+		add(panelBotones);
+		add(panelTituloTienda);
+
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -177,12 +181,6 @@ public class PanelTiendaPrincipal extends Paneles {
 	 */
 	public void setPanelCentral(JPanel panelCentral) {
 		this.panelCentral = panelCentral;
-	}
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -253,5 +251,89 @@ public class PanelTiendaPrincipal extends Paneles {
 	 */
 	public JTextPane getTextPane_buscar() {
 		return textPane_buscar;
+	}
+
+	/**
+	 * @return el campo columnas
+	 */
+	public String[] getColumnas() {
+		return columnas;
+	}
+
+	/**
+	 * @param columnas El parametro columnas para setear
+	 */
+	public void setColumnas(String[] columnas) {
+		this.columnas = columnas;
+	}
+
+	/**
+	 * @return el campo tableModel
+	 */
+	public DefaultTableModel getTableModel() {
+		return tableModel;
+	}
+
+	/**
+	 * @param tableModel El parametro tableModel para setear
+	 */
+	public void setTableModel(DefaultTableModel tableModel) {
+		this.tableModel = tableModel;
+	}
+
+	/**
+	 * @param textPane_buscar El parametro textPane_buscar para setear
+	 */
+	public void setTextPane_buscar(JTextPane textPane_buscar) {
+		this.textPane_buscar = textPane_buscar;
+	}
+
+	/**
+	 * @param btnBuscarArticulo El parametro btnBuscarArticulo para setear
+	 */
+	public void setBtnBuscarArticulo(JButton btnBuscarArticulo) {
+		this.btnBuscarArticulo = btnBuscarArticulo;
+	}
+
+	/**
+	 * @param btnVerCarritoDeTienda El parametro btnVerCarritoDeTienda para setear
+	 */
+	public void setBtnVerCarritoDeTienda(JButton btnVerCarritoDeTienda) {
+		this.btnVerCarritoDeTienda = btnVerCarritoDeTienda;
+	}
+
+	/**
+	 * @param btnSalir El parametro btnSalir para setear
+	 */
+	public void setBtnSalir(JButton btnSalir) {
+		this.btnSalir = btnSalir;
+	}
+
+	/**
+	 * @param btnLogIn El parametro btnLogIn para setear
+	 */
+	public void setBtnLogIn(JButton btnLogIn) {
+		this.btnLogIn = btnLogIn;
+	}
+
+	/**
+	 * @param table El parametro table para setear
+	 */
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	/**
+	 * @return el campo scrollPane
+	 */
+	public ScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	/**
+	 * @param scrollPane El parametro scrollPane para setear
+	 */
+	public void setScrollPane(ScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
 	}
 }

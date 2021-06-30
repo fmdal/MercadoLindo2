@@ -2,10 +2,13 @@ package events;
 
 import java.awt.event.ActionEvent;
 
+import views.frames.FramePrincipal;
 import views.panels.PanelIngTarjetas;
 import views.panels.Paneles;
 
 public class PanelIngTarjetasEventos extends Eventos {
+
+	private FramePrincipal frame;
 
 	public PanelIngTarjetasEventos(Paneles panel) {
 		super(panel);
@@ -15,19 +18,17 @@ public class PanelIngTarjetasEventos extends Eventos {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(((PanelIngTarjetas) this.panel).getBtnIngresarTarjetaOK())) {
-			
+
 		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getBtnAceptarTarjeta())) {
-		
-		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getComboBoxTipoTarjeta())) {	
-			
-		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getTextPane_nroTarjeta())) {	
-			
-		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getTextPane_marcaTarjeta())) {	
-				
+
+		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getComboBoxTipoTarjeta())) {
+
+		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getTextPane_nroTarjeta())) {
+
+		} else if (e.getSource().equals(((PanelIngTarjetas) this.panel).getTextPane_marcaTarjeta())) {
+
 		}
-		
+
 	}
-
-
 
 }

@@ -1,22 +1,23 @@
 package dominio;
 
 public class Articulo {
-	
+
 	private String nombre;
 	private String descripcion;
 	private String categoria;
 	private int cantidad;
 	private double precio;
-	
-	public Articulo() {}
-	
+
+	public Articulo() {
+	}
+
 	public Articulo(String nombre, String descripcion, String categoria, int cantidad, double precio) {
 		// TODO Auto-generated constructor stub
-		this.nombre=nombre;
-		this.descripcion=descripcion;
-		this.categoria=categoria;
-		this.cantidad=cantidad;
-		this.precio=precio;	
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.categoria = categoria;
+		this.cantidad = cantidad;
+		this.precio = precio;
 	}
 
 	/**

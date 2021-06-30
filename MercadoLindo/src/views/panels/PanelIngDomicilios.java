@@ -1,38 +1,19 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.SystemColor;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextPane;
-import javax.swing.JComboBox;
-
 public class PanelIngDomicilios extends Paneles {
 
-//	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
-	
 	private JPanel panelTituloLogIn = new JPanel();
 	private JLabel lblTituloIngDomicilios = new JLabel("Ingresar domicilios - Mercado Lindo");
 	private JPanel panelBotones = new JPanel();
@@ -47,43 +28,41 @@ public class PanelIngDomicilios extends Paneles {
 	private final JTextPane textPane_numero = new JTextPane();
 	private final JTextPane textPane_calle = new JTextPane();
 	private final JLabel lblLocalidad = new JLabel("Localidad");
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelIngDomicilios() {
-		
-		//evento.setVista(this);
+
+		// evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-		
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
+
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		add(panelTituloLogIn);
 		panelTituloLogIn.setLayout(null);
 		lblTituloIngDomicilios.setBounds(10, 0, 198, 29);
-		
+
 		lblTituloIngDomicilios.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelTituloLogIn.add(lblTituloIngDomicilios);
-		
-	
+
 		panelBotones.setBounds(0, 253, 450, 47);
 		add(panelBotones);
 		panelBotones.setLayout(null);
 		btnSalir.setBounds(387, 11, 53, 23);
 		panelBotones.add(btnSalir);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 
 		panelCentral.setBounds(0, 40, 450, 214);
 		add(panelCentral);
 		panelCentral.setLayout(null);
-		
+
 		JTextPane textPane_Calle = new JTextPane();
 		textPane_Calle.setBounds(135, -1, 119, 22);
 		panelCentral.add(textPane_Calle);
-		
+
 		JLabel lblCalle = new JLabel("Calle");
 		lblCalle.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCalle.setBounds(20, 0, 105, 22);
@@ -93,36 +72,37 @@ public class PanelIngDomicilios extends Paneles {
 		panelCentral.add(btnAceptarDomicilios);
 		btnIngresarDomicilioOK.addActionListener(evento);
 		btnIngresarDomicilioOK.setBounds(78, 146, 176, 23);
-		
+
 		panelCentral.add(btnIngresarDomicilioOK);
 		textPane_numero.setBounds(135, 32, 119, 22);
-		
+
 		panelCentral.add(textPane_numero);
 		lblNumero.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumero.setBounds(20, 33, 105, 22);
-		
+
 		panelCentral.add(lblNumero);
 		lblCodigoPostal.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigoPostal.setBounds(20, 65, 105, 22);
-		
+
 		panelCentral.add(lblCodigoPostal);
 		textPane_codigoPostal.setBounds(135, 65, 119, 22);
-		
+
 		panelCentral.add(textPane_codigoPostal);
 		textPane_localidad.setBounds(135, 98, 119, 22);
-		
+
 		panelCentral.add(textPane_localidad);
 		lblLocalidad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLocalidad.setBounds(20, 98, 105, 22);
-		
+
 		panelCentral.add(lblLocalidad);
-		System.out.println("esto");
+//		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -176,10 +156,6 @@ public class PanelIngDomicilios extends Paneles {
 		this.panelBotones = panelBotones;
 	}
 
-
-
-	
-
 	/**
 	 * @return the panelCentral
 	 */
@@ -197,7 +173,7 @@ public class PanelIngDomicilios extends Paneles {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**

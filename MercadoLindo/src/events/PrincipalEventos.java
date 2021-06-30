@@ -10,15 +10,10 @@
  */
 package events;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import controller.PrincipalController;
-import controller.VersionController;
 import views.frames.FramePrincipal;
 
 /**
@@ -39,6 +34,7 @@ public class PrincipalEventos implements ActionListener {
 	 * @var ControlerPrincipal datos
 	 */
 	private PrincipalController datos;
+
 	/**
 	 * Constructor de la clase
 	 *
@@ -52,8 +48,7 @@ public class PrincipalEventos implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 //		try {
-			
-			
+
 //			if (e.getSource().equals(this.vista.getItemMenuFileCerrar())) {
 //				System.out.println("1");
 //				int opcion = JOptionPane.showConfirmDialog(this.vista, "¿Seguro que desea guardar y salir?", "Salir",

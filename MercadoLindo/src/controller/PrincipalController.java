@@ -44,8 +44,40 @@ public class PrincipalController {
 
 	public Object initPanel() throws Exception {
 		FramePrincipal vista = new FramePrincipal();
+		vista.getEvento().setDatos(this);
+		vista.init();
 
-		vista.setVisible(true);
+//		vista.setVisible(true);
+
 		return null;
 	}
+
+	/**
+	 * @return el campo modelo
+	 */
+	public DemoPrincipal getModelo() {
+		return modelo;
+	}
+
+	/**
+	 * @param modelo El parametro modelo para setear
+	 */
+	public void setModelo(DemoPrincipal modelo) {
+		this.modelo = modelo;
+	}
+
+	/**
+	 * @return el campo vista
+	 */
+	public FramePrincipal getVista() {
+		return vista;
+	}
+
+	/**
+	 * @param vista El parametro vista para setear
+	 */
+	public void setVista(FramePrincipal vista) {
+		this.vista = vista;
+	}
+
 }

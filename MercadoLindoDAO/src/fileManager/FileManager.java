@@ -13,7 +13,7 @@ package fileManager;
 import java.io.File;
 
 import dao.iDAO;
-import funciones.Archivos;
+//import funciones.Archivos;
 
 /**
  * Clase de
@@ -48,7 +48,7 @@ public abstract class FileManager<T> implements iDAO<T>, AutoCloseable {
 	 * @throws Exception
 	 */
 	public FileManager(String name) throws Exception {
-		file = Archivos.crearArchivo(name);
+//		file = Archivos.crearArchivo(name);
 	}
 
 }

@@ -1,112 +1,107 @@
 package views.panels;
 
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
-import events.PanelTiendaPrincipalEventos;
-
-import java.awt.SystemColor;
-import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.SystemColor;
+
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+
+import events.PanelLogInEventos;
 
 public class PanelLogIn extends Paneles {
 
-//	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
-	
+	/**
+	 * @var long - serialVersionUID
+	 */
+	private static final long serialVersionUID = 4776532445734707636L;
+
 	private JPanel panelTituloLogIn = new JPanel();
-	private JLabel lblTituloLogIn = new JLabel("Iniciar Sesion - Mercado Lindo");
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	private final JButton btnSalir = new JButton("Salir");
-	private final JButton btnLogIn = new JButton("Iniciar Sesion");
-	private JPasswordField passwordField;
-	private final JTextPane textPane_dni = new JTextPane();
-	
+	private JButton btnSalir = new JButton("Salir");
+	private JButton btnLogIn = new JButton("Iniciar Sesion");
+	private JPasswordField passwordField = new JPasswordField();
+	private JTextPane textPane_dni = new JTextPane();
+	private JLabel lblTituloLogIn = new JLabel("Iniciar Sesion - Mercado Lindo");
+	private JLabel lblContrasena = new JLabel("Contrase\u00F1a");
+	private JLabel lblUsuarioLogIn = new JLabel("DNI");
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelLogIn() {
-		
-//		evento.setVista(this);
-		evento = new PanelTiendaPrincipalEventos(this);
-		
+		System.out.println(3);
+		evento = new PanelLogInEventos(this);
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
-		panelTituloLogIn.setBounds(0, 0, 450, 40);
-		add(panelTituloLogIn);
-		panelTituloLogIn.setLayout(null);
+
+	}
+
+	@Override
+	public void init() {
+
 		lblTituloLogIn.setBounds(10, 0, 171, 29);
-		
 		lblTituloLogIn.setFont(new Font("Arial", Font.PLAIN, 12));
+
 		panelTituloLogIn.add(lblTituloLogIn);
-		
-	
-		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
-		panelBotones.setLayout(null);
-		btnSalir.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalir);
+		panelTituloLogIn.setBounds(0, 0, 450, 40);
+		panelTituloLogIn.setLayout(null);
+
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-		
+		btnSalir.setBounds(387, 11, 53, 23);
+		btnSalir.addActionListener(evento);
+
+		panelBotones.add(btnSalir);
+		panelBotones.setBounds(0, 253, 450, 47);
+		panelBotones.setLayout(null);
+
+		passwordField.setBounds(220, 99, 120, 22);
 
 		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
 		panelCentral.setLayout(null);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(220, 99, 120, 22);
 		panelCentral.add(passwordField);
-		
-		JTextPane textPane_dni = new JTextPane();
+
 		textPane_dni.setBounds(220, 66, 119, 22);
-		panelCentral.add(textPane_dni);
-		
-		JLabel lblUsuarioLogIn = new JLabel("DNI");
+
 		lblUsuarioLogIn.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioLogIn.setBounds(167, 66, 46, 22);
-		panelCentral.add(lblUsuarioLogIn);
-		
-		JLabel lblContrasena = new JLabel("Contrase\u00F1a");
+
+		btnLogIn.setBounds(230, 132, 95, 23);
+		btnLogIn.addActionListener(evento);
+
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(157, 99, 56, 22);
+
+		panelCentral.add(textPane_dni);
+		panelCentral.add(lblUsuarioLogIn);
 		panelCentral.add(lblContrasena);
-		btnLogIn.setBounds(230, 132, 95, 23);
 		panelCentral.add(btnLogIn);
-		System.out.println("esto");
+
+		add(panelTituloLogIn);
+		add(panelCentral);
+		add(panelBotones);
+
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
-	public PanelTiendaPrincipalEventos getEvento() {
-		return (PanelTiendaPrincipalEventos) evento;
+	@Override
+	public PanelLogInEventos getEvento() {
+		return (PanelLogInEventos) evento;
 	}
 
 	/**
 	 * @param evento the evento to set
 	 */
-	public void setEvento(PanelTiendaPrincipalEventos evento) {
+	public void setEvento(PanelLogInEventos evento) {
 		this.evento = evento;
 	}
 
@@ -164,12 +159,6 @@ public class PanelLogIn extends Paneles {
 	 */
 	public void setPanelCentral(JPanel panelCentral) {
 		this.panelCentral = panelCentral;
-	}
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**

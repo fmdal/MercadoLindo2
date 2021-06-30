@@ -1,48 +1,33 @@
 package views.panels;
 
+import java.awt.Font;
+import java.awt.SystemColor;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelTiendaPrincipalEventos;
 
-import java.awt.SystemColor;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Color;
-import javax.swing.JTextArea;
-import java.awt.List;
-import java.awt.Scrollbar;
-import javax.swing.JList;
-import javax.swing.JTable;
-import java.awt.ScrollPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextPane;
-
 public class PanelRegistrarse extends Paneles {
 
 //	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
-	
+
 	private JPanel panelTituloLogIn = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JLabel lblTituloRegistrarse = new JLabel("Registrarse - Mercado Lindo");
 	private final JLabel lblNombre = new JLabel("Nombre");
 	private final JLabel lblApellido = new JLabel("Apellido");
-	
+
 	private final JButton btnSalir = new JButton("Salir");
 	private final JButton btnCrearCuenta = new JButton("Crear Cuenta");
-	
+
 	private JPasswordField passwordField;
 	private final JTextPane textPane_nombre = new JTextPane();
 	private final JTextPane textPane_apellido = new JTextPane();
@@ -50,52 +35,50 @@ public class PanelRegistrarse extends Paneles {
 
 	private final JButton btnIngDomicilios = new JButton("Ingresar Domicilios");
 	private final JButton btnIngresarTarjetas = new JButton("Ingresar tarjetas");
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelRegistrarse() {
-		
+
 //		evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-		
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
+
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		add(panelTituloLogIn);
 		panelTituloLogIn.setLayout(null);
 		lblTituloRegistrarse.setBounds(10, 0, 188, 29);
-		
+
 		lblTituloRegistrarse.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelTituloLogIn.add(lblTituloRegistrarse);
-		
-	
+
 		panelBotones.setBounds(0, 253, 450, 47);
 		add(panelBotones);
 		panelBotones.setLayout(null);
 		btnSalir.setBounds(387, 11, 53, 23);
 		panelBotones.add(btnSalir);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 
 		panelCentral.setBounds(0, 40, 450, 214);
 		add(panelCentral);
 		panelCentral.setLayout(null);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(76, 32, 120, 22);
 		panelCentral.add(passwordField);
-		
+
 		JTextPane textPane_dni = new JTextPane();
 		textPane_dni.setBounds(76, 0, 119, 22);
 		panelCentral.add(textPane_dni);
-		
+
 		JLabel lblDniLogIn = new JLabel("DNI");
 		lblDniLogIn.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDniLogIn.setBounds(20, 0, 46, 22);
 		panelCentral.add(lblDniLogIn);
-		
+
 		JLabel lblContrasena = new JLabel("Contrase\u00F1a");
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(10, 32, 56, 22);
@@ -103,32 +86,33 @@ public class PanelRegistrarse extends Paneles {
 		btnCrearCuenta.setBounds(49, 191, 120, 23);
 		panelCentral.add(btnCrearCuenta);
 		textPane_nombre.setBounds(76, 65, 119, 22);
-		
+
 		panelCentral.add(textPane_nombre);
 		textPane_apellido.setBounds(76, 98, 119, 22);
-		
+
 		panelCentral.add(textPane_apellido);
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(10, 65, 56, 22);
-		
+
 		panelCentral.add(lblNombre);
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setBounds(10, 98, 56, 22);
-		
+
 		panelCentral.add(lblApellido);
 		btnIngDomicilios.setBounds(20, 159, 176, 23);
-		
+
 		panelCentral.add(btnIngDomicilios);
 		btnIngresarTarjetas.setBounds(20, 130, 176, 23);
-		
+
 		panelCentral.add(btnIngresarTarjetas);
-		System.out.println("esto");
+//		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 	/**
 	 * @return the evento
 	 */
+	@Override
 	public PanelTiendaPrincipalEventos getEvento() {
 		return (PanelTiendaPrincipalEventos) evento;
 	}
@@ -199,7 +183,7 @@ public class PanelRegistrarse extends Paneles {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**

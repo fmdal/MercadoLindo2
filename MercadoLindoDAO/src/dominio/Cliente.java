@@ -2,31 +2,50 @@ package dominio;
 
 import java.util.ArrayList;
 
-public class Cliente {
-	
-	private int nroIdentificacion;
-	private long dni;
-	private String contrasenia;
-	private String nombre;
-	private String apellido;
-	private ArrayList<Domicilio> listaDomicilios = new ArrayList<Domicilio>();
-	private Domicilio domicilioPrincipal;
-	private ArrayList<Tarjeta> listaTarjetas = new ArrayList<Tarjeta>();
-	private Tarjeta tarjetaPrincipal;
-	
-	public Cliente() {}
-	
-	public Cliente(int nroIdentificacion, long dni, String contrasenia, String nombre, String apellido, ArrayList<Domicilio> listaDomicilios, Domicilio domicilioPrincipal, ArrayList<Tarjeta> listaTarjetas, Tarjeta tarjetaPrincipal) {
+public abstract class Cliente {
+
+	protected int nroIdentificacion;
+	protected long dni;
+	protected String contrasenia;
+	protected String nombre;
+	protected String apellido;
+	protected ArrayList<Domicilio> listaDomicilios = new ArrayList<Domicilio>();
+	protected Domicilio domicilioPrincipal;
+	protected ArrayList<Tarjeta> listaTarjetas = new ArrayList<Tarjeta>();
+	protected Tarjeta tarjetaPrincipal;
+
+	public Cliente() {
+	}
+
+	public Cliente(int nroIdentificacion, long dni, String contrasenia, String nombre, String apellido,
+			ArrayList<Domicilio> listaDomicilios, Domicilio domicilioPrincipal, ArrayList<Tarjeta> listaTarjetas,
+			Tarjeta tarjetaPrincipal) {
 		// TODO Auto-generated constructor stub
-		this.nroIdentificacion=nroIdentificacion;
-		this.dni=dni;
-		this.contrasenia=contrasenia;
-		this.nombre=nombre;
-		this.apellido=apellido;
-		this.listaDomicilios=listaDomicilios;
-		this.domicilioPrincipal=domicilioPrincipal;
-		this.listaTarjetas=listaTarjetas;
-		this.tarjetaPrincipal=tarjetaPrincipal;
+		this.nroIdentificacion = nroIdentificacion;
+		this.dni = dni;
+		this.contrasenia = contrasenia;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.listaDomicilios = listaDomicilios;
+		this.domicilioPrincipal = domicilioPrincipal;
+		this.listaTarjetas = listaTarjetas;
+		this.tarjetaPrincipal = tarjetaPrincipal;
+	}
+
+	/**
+	 * @param nroIdentificacion
+	 * @param dni
+	 * @param contrasenia
+	 * @param nombre
+	 * @param apellido
+	 */
+	public Cliente(int nroIdentificacion, long dni, String contrasenia, String nombre, String apellido) {
+		super();
+		this.nroIdentificacion = nroIdentificacion;
+		this.dni = dni;
+		this.contrasenia = contrasenia;
+		this.nombre = nombre;
+		this.apellido = apellido;
 	}
 
 	/**
