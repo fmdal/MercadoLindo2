@@ -11,7 +11,8 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import events.PanelTiendaPrincipalEventos;
+import events.PanelRegistrarseEventos;
+import views.frames.FramePrincipal;
 
 public class PanelRegistrarse extends Paneles {
 
@@ -28,11 +29,11 @@ public class PanelRegistrarse extends Paneles {
 	private final JLabel lblApellido = new JLabel("Apellido");
 
 	private JPasswordField passwordField;
-	
+
 	private final JTextPane textPane_nombre = new JTextPane();
 	private final JTextPane textPane_apellido = new JTextPane();
 	private final JTextPane textPane_dni = new JTextPane();
-	
+
 	private final JButton btnSalir = new JButton("Salir");
 	private final JButton btnCrearCuenta = new JButton("Crear Cuenta");
 	private final JButton btnIngDomicilios = new JButton("Ingresar Domicilios");
@@ -41,10 +42,10 @@ public class PanelRegistrarse extends Paneles {
 	/**
 	 * Create the panel.
 	 */
-	public PanelRegistrarse() {
+	public PanelRegistrarse(FramePrincipal frame) {
 
 //		evento.setVista(this);
-		evento = new PanelTiendaPrincipalEventos(this);
+		evento = new PanelRegistrarseEventos(this, frame);
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
@@ -59,23 +60,23 @@ public class PanelRegistrarse extends Paneles {
 		lblNombre.setBounds(10, 65, 56, 22);
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setBounds(10, 98, 56, 22);
-		
+
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		panelTituloLogIn.setLayout(null);
-		
+
 		panelBotones.setBounds(0, 253, 450, 47);
 		panelBotones.setLayout(null);
 
 		panelCentral.setBounds(0, 40, 450, 214);
 		panelCentral.setLayout(null);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(76, 32, 120, 22);
 
 		textPane_dni.setBounds(76, 0, 119, 22);
 		textPane_nombre.setBounds(76, 65, 119, 22);
 		textPane_apellido.setBounds(76, 98, 119, 22);
-	
+
 		btnSalir.setBounds(387, 11, 53, 23);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnSalir.addActionListener(evento);
@@ -85,7 +86,7 @@ public class PanelRegistrarse extends Paneles {
 		btnIngDomicilios.addActionListener(evento);
 		btnIngresarTarjetas.setBounds(20, 130, 176, 23);
 		btnIngresarTarjetas.addActionListener(evento);
-		
+
 		panelTituloLogIn.add(lblTituloRegistrarse);
 		panelBotones.add(btnSalir);
 		panelCentral.add(passwordField);
@@ -99,29 +100,29 @@ public class PanelRegistrarse extends Paneles {
 		panelCentral.add(btnCrearCuenta);
 		panelCentral.add(btnIngDomicilios);
 		panelCentral.add(btnIngresarTarjetas);
-		
+
 		add(panelTituloLogIn);
 		add(panelBotones);
 		add(panelCentral);
-		
+
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 //	Getters & Setters
-	
+
 	/**
 	 * @return the evento
 	 */
 	@Override
-	public PanelTiendaPrincipalEventos getEvento() {
-		return (PanelTiendaPrincipalEventos) evento;
+	public PanelRegistrarseEventos getEvento() {
+		return (PanelRegistrarseEventos) evento;
 	}
 
 	/**
 	 * @param evento the evento to set
 	 */
-	public void setEvento(PanelTiendaPrincipalEventos evento) {
+	public void setEvento(PanelRegistrarseEventos evento) {
 		this.evento = evento;
 	}
 

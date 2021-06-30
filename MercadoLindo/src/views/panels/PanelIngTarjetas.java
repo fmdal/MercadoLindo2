@@ -11,7 +11,8 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import events.PanelTiendaPrincipalEventos;
+import events.PanelIngTarjetasEventos;
+import views.frames.FramePrincipal;
 
 public class PanelIngTarjetas extends Paneles {
 
@@ -21,29 +22,26 @@ public class PanelIngTarjetas extends Paneles {
 	private final JLabel lblTipoTarjeta = new JLabel("Tipo de tarjeta");
 	private JLabel lblTituloRegistrarse = new JLabel("Ingresar tarjetas - Mercado Lindo");
 	private JLabel lblNumeroTarjeta = new JLabel("Numero de tarjeta");
-	
+
 	private JPanel panelIngTarjeta = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JComboBox comboBoxTipoTarjeta = new JComboBox();
-	
+
 	private final JButton btnSalirTarjeta = new JButton("Salir");
 	private final JButton btnAceptarTarjeta = new JButton("Aceptar");
 	private final JButton btnIngresarTarjetaOK = new JButton("Ingresar tarjeta");
 	private final JTextPane textPane_marcaTarjeta = new JTextPane();
 	private final JTextPane textPane_nroTarjeta = new JTextPane();
-	
-
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelIngTarjetas() {
+	public PanelIngTarjetas(FramePrincipal frame) {
 
-//		evento.setVista(this);
-		evento = new PanelTiendaPrincipalEventos(this);
-		
+		evento = new PanelIngTarjetasEventos(this, frame);
+
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
 
@@ -76,13 +74,13 @@ public class PanelIngTarjetas extends Paneles {
 		panelCentral.add(lblMarcaTarjeta);
 		panelCentral.add(lblTipoTarjeta);
 		panelCentral.add(comboBoxTipoTarjeta);
-		
+
 		comboBoxTipoTarjeta.setBounds(135, 65, 119, 22);
-		
+
 		comboBoxTipoTarjeta.addItem("Credito");
 		comboBoxTipoTarjeta.addItem("Debito");
 		comboBoxTipoTarjeta.addItem("Prepaga");
-		
+
 		btnSalirTarjeta.setBounds(387, 11, 53, 23);
 		btnSalirTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnSalirTarjeta.addActionListener(evento);
@@ -90,29 +88,29 @@ public class PanelIngTarjetas extends Paneles {
 		btnAceptarTarjeta.addActionListener(evento);
 		btnIngresarTarjetaOK.addActionListener(evento);
 		btnIngresarTarjetaOK.setBounds(40, 98, 176, 23);
-		
+
 		add(panelIngTarjeta);
 		add(panelBotones);
 		add(panelCentral);
-		
+
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 //	Getters & Setters
-	
+
 	/**
 	 * @return the evento
 	 */
 	@Override
-	public PanelTiendaPrincipalEventos getEvento() {
-		return (PanelTiendaPrincipalEventos) evento;
+	public PanelIngTarjetasEventos getEvento() {
+		return (PanelIngTarjetasEventos) evento;
 	}
 
 	/**
 	 * @param evento the evento to set
 	 */
-	public void setEvento(PanelTiendaPrincipalEventos evento) {
+	public void setEvento(PanelIngTarjetasEventos evento) {
 		this.evento = evento;
 	}
 

@@ -15,7 +15,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import events.VersionEventos;
 import views.panels.VersionPanel;
 
 /**
@@ -46,27 +45,6 @@ public class VersionController extends ControladorPaneles {
 		propiedades.load(new FileReader("config.propierties"));
 
 		vista = new VersionPanel();
-	}
-
-	@Override
-	public Object initPanel() {
-
-		((VersionEventos) this.vista.getEvento()).setControl(this);
-
-		((VersionPanel) this.vista).setLblPrograma(propiedades.getProperty("titulo"));
-
-		((VersionPanel) this.vista).setLblVersion(propiedades.getProperty("version"));
-
-		((VersionPanel) this.vista).setLblAutor(propiedades.getProperty("autor"));
-
-		((VersionPanel) this.vista).setLblContacto(propiedades.getProperty("contacto"));
-
-		((VersionPanel) this.vista).setLblDescripcion(propiedades.getProperty("descripcion"));
-		this.vista.init();
-
-		this.vista.setVisible(true);
-
-		return this.vista;
 	}
 
 }

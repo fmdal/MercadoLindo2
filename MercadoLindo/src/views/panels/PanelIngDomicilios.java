@@ -10,42 +10,42 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import events.PanelTiendaPrincipalEventos;
+import events.PanelDomiciliosEventos;
+import views.frames.FramePrincipal;
 
 public class PanelIngDomicilios extends Paneles {
 
 	private JPanel panelTituloLogIn = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JLabel lblTituloIngDomicilios = new JLabel("Ingresar domicilios - Mercado Lindo");
-	
+
 	private JLabel lblCalle = new JLabel("Calle");
 	private JLabel lblNumero = new JLabel("Numero");
 	private JLabel lblCodigoPostal = new JLabel("Codigo postal");
 	private JLabel lblLocalidad = new JLabel("Localidad");
-	
+
 	private final JButton btnSalir = new JButton("Salir");
 	private final JButton btnAceptarDomicilios = new JButton("Aceptar");
 	private final JButton btnIngresarDomicilioOK = new JButton("Ingresar domicilio");
-	
+
 	private final JTextPane textPane_codigoPostal = new JTextPane();
 	private final JTextPane textPane_localidad = new JTextPane();
 	private final JTextPane textPane_numero = new JTextPane();
 	private final JTextPane textPane_Calle = new JTextPane();
-	
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelIngDomicilios() {
+	public PanelIngDomicilios(FramePrincipal frame) {
 
 		// evento.setVista(this);
-		evento = new PanelTiendaPrincipalEventos(this);
+		evento = new PanelDomiciliosEventos(this, frame);
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-		
+
 		lblTituloIngDomicilios.setBounds(10, 0, 198, 29);
 		lblTituloIngDomicilios.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblNumero.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -61,10 +61,10 @@ public class PanelIngDomicilios extends Paneles {
 		panelTituloLogIn.setLayout(null);
 		panelBotones.setBounds(0, 253, 450, 47);
 		panelBotones.setLayout(null);
-		
+
 		panelCentral.setBounds(0, 40, 450, 214);
 		panelCentral.setLayout(null);
-		
+
 		btnSalir.addActionListener(evento);
 		btnSalir.setBounds(387, 11, 53, 23);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -72,12 +72,12 @@ public class PanelIngDomicilios extends Paneles {
 		btnAceptarDomicilios.setBounds(112, 180, 120, 23);
 		btnIngresarDomicilioOK.addActionListener(evento);
 		btnIngresarDomicilioOK.setBounds(78, 146, 176, 23);
-		
+
 		textPane_Calle.setBounds(135, -1, 119, 22);
 		textPane_numero.setBounds(135, 32, 119, 22);
-		textPane_codigoPostal.setBounds(135, 65, 119, 22);	
+		textPane_codigoPostal.setBounds(135, 65, 119, 22);
 		textPane_localidad.setBounds(135, 98, 119, 22);
-		
+
 		panelTituloLogIn.add(lblTituloIngDomicilios);
 		panelBotones.add(btnSalir);
 		panelCentral.add(btnAceptarDomicilios);
@@ -90,29 +90,29 @@ public class PanelIngDomicilios extends Paneles {
 		panelCentral.add(textPane_numero);
 		panelCentral.add(textPane_codigoPostal);
 		panelCentral.add(textPane_localidad);
-		
+
 		add(panelTituloLogIn);
 		add(panelBotones);
 		add(panelCentral);
-		
+
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 //	Getters & Setters
-	
+
 	/**
 	 * @return the evento
 	 */
 	@Override
-	public PanelTiendaPrincipalEventos getEvento() {
-		return (PanelTiendaPrincipalEventos) evento;
+	public PanelDomiciliosEventos getEvento() {
+		return (PanelDomiciliosEventos) evento;
 	}
 
 	/**
 	 * @param evento the evento to set
 	 */
-	public void setEvento(PanelTiendaPrincipalEventos evento) {
+	public void setEvento(PanelDomiciliosEventos evento) {
 		this.evento = evento;
 	}
 

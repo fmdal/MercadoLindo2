@@ -42,15 +42,15 @@ public abstract class ControladorPaneles {
 	public ControladorPaneles() {
 	}
 
-	/**
-	 * Funcion que inicializa los componentes de la vista y la dispara. Debe
-	 * contener obligatoriamente:
-	 *
-	 * this.vista.getEvento().setControl(this); this.vista.setVisible(true);
-	 *
-	 * @return objeto inicializado
-	 */
-	public abstract Object initPanel();
+//	/**
+//	 * Funcion que inicializa los componentes de la vista y la dispara. Debe
+//	 * contener obligatoriamente:
+//	 *
+//	 * this.vista.getEvento().setControl(this); this.vista.setVisible(true);
+//	 *
+//	 * @return objeto inicializado
+//	 */
+//	public abstract Object initPanel();
 
 	/**
 	 * Funcion que cierra la vista sobre la que trabaja el controlador.

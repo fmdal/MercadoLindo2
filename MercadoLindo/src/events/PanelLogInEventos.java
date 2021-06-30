@@ -18,8 +18,9 @@ public class PanelLogInEventos extends Eventos {
 
 	private FramePrincipal frame;
 
-	public PanelLogInEventos(Paneles panel) {
+	public PanelLogInEventos(Paneles panel, FramePrincipal frame) {
 		super(panel);
+		this.frame = frame;
 	}
 
 	@Override
@@ -43,11 +44,7 @@ public class PanelLogInEventos extends Eventos {
 								Long.parseLong(((PanelLogIn) panel).getTextPane_dni().getText()),
 								((PanelLogIn) panel).getPasswordField().getText()));
 
-				PanelTiendaPrincipal ventana = new PanelTiendaPrincipal();
-				PanelTiendaPrincipalControlador contol = new PanelTiendaPrincipalControlador();
-				control.setVista(ventana);
-
-				ventana.getEvento().setFrame(frame);
+				PanelTiendaPrincipalControlador contol = new PanelTiendaPrincipalControlador(frame);
 
 				((PanelTiendaPrincipal) contol.getVista())
 						.setListaArticulos(frame.getEvento().getDatos().getModelo().getArticulos());

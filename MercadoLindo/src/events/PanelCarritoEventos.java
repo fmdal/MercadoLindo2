@@ -1,34 +1,83 @@
 package events;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import controller.PanelCarritoControlador;
+import controller.PanelDomiciliosControlador;
+import controller.PanelTarjetasControlador;
+import controller.PanelTiendaPrincipalControlador;
 import views.frames.FramePrincipal;
 import views.panels.PanelCarrito;
+import views.panels.PanelTiendaPrincipal;
 import views.panels.Paneles;
 
 public class PanelCarritoEventos extends Eventos {
 
 	private FramePrincipal frame;
 
-	public PanelCarritoEventos(Paneles panel) {
+	public PanelCarritoEventos(Paneles panel, FramePrincipal frame) {
 		super(panel);
-		// TODO Auto-generated constructor stub
+		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(((PanelCarrito) this.panel).getBtnComprarCarrito())) {
+		if (e.getSource().equals(((PanelCarrito) this.panel).getBtnSalirMiCarrito())) {
+			int opcion = JOptionPane.showConfirmDialog(this.panel, "¿Seguro que desea salir?", "Salir",
+					JOptionPane.YES_NO_OPTION);
+			if (opcion == 0) {
+				System.exit(0);
+			}
 
+		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnComprarCarrito())) {
+			((PanelCarritoControlador) control).comprarCarrito();
 		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnCambiarDomicilio())) {
 
-		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnSalirMiCarrito())) {
+			PanelDomiciliosControlador contol = new PanelDomiciliosControlador(frame);
 
+			frame.getPanelContenedor().removeAll();
+			frame.getPanelContenedor().repaint();
+
+			frame.getContentPane().add((Component) contol.initPanel());
+
+			// FIXME no tengo ni idea de porque esto
+			JPanel panel = new JPanel();
+			frame.getContentPane().add(panel);
 		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnVolverAlaTienda())) {
+
+			PanelTiendaPrincipalControlador contol = new PanelTiendaPrincipalControlador(frame);
+
+			((PanelTiendaPrincipal) contol.getVista())
+					.setListaArticulos(frame.getEvento().getDatos().getModelo().getArticulos());
+
+			frame.getPanelContenedor().removeAll();
+			frame.getPanelContenedor().repaint();
+
+			frame.getContentPane().add((Component) contol.initPanel());
+
+			// FIXME no tengo ni idea de porque esto
+			JPanel panel = new JPanel();
+			frame.getContentPane().add(panel);
 
 		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnCambiarTarjeta())) {
 
-		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnVaciarCarrito())) {
+			PanelTarjetasControlador contol = new PanelTarjetasControlador(frame);
 
+			frame.getPanelContenedor().removeAll();
+			frame.getPanelContenedor().repaint();
+
+			frame.getContentPane().add((Component) contol.initPanel());
+
+			// FIXME no tengo ni idea de porque esto
+			JPanel panel = new JPanel();
+			frame.getContentPane().add(panel);
+
+		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnVaciarCarrito())) {
+			((PanelCarritoControlador) control).vaciarCarrito();
 		}
 
 	}

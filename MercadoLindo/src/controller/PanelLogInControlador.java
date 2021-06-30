@@ -5,25 +5,18 @@ import java.util.ArrayList;
 import dominio.Cliente;
 import events.Eventos;
 import excepcions.logginException;
+import views.frames.FramePrincipal;
 import views.panels.PanelLogIn;
 
 public class PanelLogInControlador extends ControladorPaneles {
 
-	public PanelLogInControlador() {
-		vista = new PanelLogIn();
+	public PanelLogInControlador(FramePrincipal frame) {
+		vista = new PanelLogIn(frame);
 	}
 
-	/**
-	 * @param ventana
-	 */
-	public PanelLogInControlador(PanelLogIn ventana) {
-		vista = ventana;
-	}
-
-	@Override
 	public Object initPanel() {
+
 		((Eventos) vista.getEvento()).setControl(this);
-		System.out.println(2);
 
 		vista.init();
 		vista.setVisible(true);
@@ -55,4 +48,5 @@ public class PanelLogInControlador extends ControladorPaneles {
 		}
 		return null;
 	}
+
 }

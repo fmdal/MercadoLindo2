@@ -91,6 +91,56 @@ public class DemoPrincipal {
 		clientes.add(new Usuario(i++, 39562174, "123", "Homero", "Simpson"));
 		clientes.add(new Usuario(i++, 39562184, "123", "Ricky", "Martin"));
 		clientes.add(new Usuario(i++, 39562194, "123", "Lalo", "Landas"));
+
+		clientes.add(new Empresa(i++, 38562144, "123", "DiosSA"));
+		clientes.add(new Empresa(i++, 37562144, "123", "AlaSA"));
+		clientes.add(new Empresa(i++, 36562144, "123", "ThorSA"));
+		clientes.add(new Empresa(i++, 35562144, "123", "ZeusSA"));
+
+		int f = 0;
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1616, "amex", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1615, "provincia", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1614, "bancoGrande", "prepaga"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1613, "frances", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1612, "hsbc", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1611, "amex", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1610, "chinaBank", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1609, "casaBlanca", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1608, "fundacionSiSi", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(1607, "pagosGrandes", "prepaga"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16126, "amex", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16215, "provincia", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16214, "bancoGrande", "prepaga"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(12613, "frances", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16212, "hsbc", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16211, "amex", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16120, "chinaBank", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(162209, "casaBlanca", "credito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16028, "fundacionSiSi", "debito"));
+		clientes.get(f++).getListaTarjetas().add(new Tarjeta(16207, "pagosGrandes", "prepaga"));
+
+		f = 0;
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("SiempreViva", 123, 1616, "VillaMaipu"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Bermudez", 111, 1640, "VicenteLopez"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Maipu", 1400, 1640, "VicenteLopez"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("SantaFe", 800, 1640, "SanIsidro"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("JuanJosePaso", 1600, 1616, "DonTorcuato"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Saavedra", 1500, 1414, "Tigre"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Posadas", 1700, 1212, "Florida"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Mendoza", 1400, 1900, "Pilar"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Curupaiti", 1800, 3232, "Munro"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Mariachita", 1800, 6464, "Munro"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("SiempreViva", 123, 1616, "VillaMaipu"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Bermudez", 111, 1640, "VicenteLopez"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Maipu", 1400, 1640, "VicenteLopez"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("SantaFe", 800, 1640, "SanIsidro"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("JuanJosePaso", 1600, 1616, "DonTorcuato"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Saavedra", 1500, 1414, "Tigre"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Posadas", 1700, 1212, "Florida"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Mendoza", 1400, 1900, "Pilar"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Curupaiti", 1800, 3232, "Munro"));
+		clientes.get(f++).getListaDomicilios().add(new Domicilio("Mariachita", 1800, 6464, "Munro"));
+
 	}
 
 	/**

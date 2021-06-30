@@ -1,15 +1,15 @@
 package controller;
 
 import events.Eventos;
+import views.frames.FramePrincipal;
 import views.panels.PanelTiendaPrincipal;
 
 public class PanelTiendaPrincipalControlador extends ControladorPaneles {
 
-	public PanelTiendaPrincipalControlador() {
-		vista = new PanelTiendaPrincipal();
+	public PanelTiendaPrincipalControlador(FramePrincipal frame) {
+		vista = new PanelTiendaPrincipal(frame);
 	}
 
-	@Override
 	public Object initPanel() {
 		((Eventos) vista.getEvento()).setControl(this);
 
@@ -31,4 +31,5 @@ public class PanelTiendaPrincipalControlador extends ControladorPaneles {
 
 	public void quitarArticuloCarrito() {
 	}
+
 }

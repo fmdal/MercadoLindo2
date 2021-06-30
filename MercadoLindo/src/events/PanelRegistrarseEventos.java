@@ -2,6 +2,8 @@ package events;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+
 import views.frames.FramePrincipal;
 import views.panels.PanelRegistrarse;
 import views.panels.Paneles;
@@ -10,14 +12,19 @@ public class PanelRegistrarseEventos extends Eventos {
 
 	private FramePrincipal frame;
 
-	public PanelRegistrarseEventos(Paneles panel) {
+	public PanelRegistrarseEventos(Paneles panel, FramePrincipal frame) {
 		super(panel);
-		// TODO Auto-generated constructor stub
+		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(((PanelRegistrarse) this.panel).getBtnSalir())) {
+			int opcion = JOptionPane.showConfirmDialog(this.panel, "¿Seguro que desea salir?", "Salir",
+					JOptionPane.YES_NO_OPTION);
+			if (opcion == 0) {
+				System.exit(0);
+			}
 
 		} else if (e.getSource().equals(((PanelRegistrarse) this.panel).getBtnCrearCuenta())) {
 

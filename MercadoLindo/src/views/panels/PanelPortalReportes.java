@@ -2,8 +2,6 @@ package views.panels;
 
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,7 +10,8 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import events.PanelTiendaPrincipalEventos;
+import events.PanelPortalReportesEventos;
+import views.frames.FramePrincipal;
 
 public class PanelPortalReportes extends Paneles {
 
@@ -21,7 +20,7 @@ public class PanelPortalReportes extends Paneles {
 	private JPanel panelTituloLogIn = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JLabel lblTituloReportes = new JLabel("Portal Reportes - Mercado Lindo");
 	private JLabel lblMayores10mil = new JLabel(
 			"<html>Obtener el nombre y dni de los clientes que realizaron compras por m\u00E1s de $10.000</html>");
@@ -34,17 +33,17 @@ public class PanelPortalReportes extends Paneles {
 	private final JButton btnDescargar_Mayores10mil = new JButton("Descargar reporte");
 	private final JButton btnDescargar_MasVendido = new JButton("Descargar");
 	private final JButton btnDescargar_Ultimas5Compras = new JButton("Descargar");
-	
+
 	private final JTextPane textPane_MasVendido = new JTextPane();
 	private final JTextPane textPane_Ultimas5Compras = new JTextPane();
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelPortalReportes() {
+	public PanelPortalReportes(FramePrincipal frame) {
 
 //		evento.setVista(this);
-		evento = new PanelTiendaPrincipalEventos(this);
+		evento = new PanelPortalReportesEventos(this, frame);
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
@@ -56,7 +55,7 @@ public class PanelPortalReportes extends Paneles {
 		panelBotones.setLayout(null);
 		panelCentral.setBounds(0, 40, 450, 214);
 		panelCentral.setLayout(null);
-		
+
 		lblTituloReportes.setBounds(10, 0, 303, 29);
 		lblTituloReportes.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblMayores10mil.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -69,19 +68,19 @@ public class PanelPortalReportes extends Paneles {
 		btnSalir.setBounds(387, 11, 53, 23);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnSalir.addActionListener(evento);
-		
+
 		btnDescargar_Mayores10mil.addActionListener(evento);
 		btnDescargar_Mayores10mil.setBounds(244, 30, 130, 23);
-		
+
 		btnDescargar_MasVendido.setBounds(369, 73, 81, 23);
 		btnDescargar_MasVendido.addActionListener(evento);
-		
+
 		btnDescargar_Ultimas5Compras.addActionListener(evento);
 		btnDescargar_Ultimas5Compras.setBounds(369, 117, 81, 23);
-		
+
 		textPane_MasVendido.setBounds(244, 74, 115, 22);
 		textPane_Ultimas5Compras.setBounds(244, 118, 115, 22);
-	
+
 		panelCentral.add(lblMayores10mil);
 		panelCentral.add(btnDescargar_Mayores10mil);
 		panelCentral.add(lblMasVendido);
@@ -91,29 +90,29 @@ public class PanelPortalReportes extends Paneles {
 		panelCentral.add(btnDescargar_MasVendido);
 		panelCentral.add(btnDescargar_Ultimas5Compras);
 		panelBotones.add(btnSalir);
-		
+
 		add(panelTituloLogIn);
 		add(panelBotones);
 		add(panelCentral);
-		
+
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
 //	Getters & Setters
-	
+
 	/**
 	 * @return the evento
 	 */
 	@Override
-	public PanelTiendaPrincipalEventos getEvento() {
-		return (PanelTiendaPrincipalEventos) evento;
+	public PanelPortalReportesEventos getEvento() {
+		return (PanelPortalReportesEventos) evento;
 	}
 
 	/**
 	 * @param evento the evento to set
 	 */
-	public void setEvento(PanelTiendaPrincipalEventos evento) {
+	public void setEvento(PanelPortalReportesEventos evento) {
 		this.evento = evento;
 	}
 

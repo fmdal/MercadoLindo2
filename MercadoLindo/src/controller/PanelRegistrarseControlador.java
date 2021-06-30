@@ -1,28 +1,33 @@
 package controller;
 
 import events.Eventos;
-import views.panels.PanelPortalReportes;
+import views.frames.FramePrincipal;
 import views.panels.PanelRegistrarse;
 
-public class PanelRegistrarseControlador extends ControladorPaneles{
+public class PanelRegistrarseControlador extends ControladorPaneles {
 
-	public PanelRegistrarseControlador() {
-		// TODO Auto-generated constructor stub
+	public PanelRegistrarseControlador(FramePrincipal frame) {
+		vista = new PanelRegistrarse(frame);
 	}
 
-	@Override
 	public Object initPanel() {
-		vista = new PanelRegistrarse();
 		((Eventos) vista.getEvento()).setControl(this);
+
+		vista.init();
 		vista.setVisible(true);
 
 		return this.vista;
 	}
 
 //	metodos
-	
-	public void ingresarTarjetas(){}
-	public void ingDomicilios(){}
-	public void crearCuenta(){}
-	
+
+	public void ingresarTarjetas() {
+	}
+
+	public void ingDomicilios() {
+	}
+
+	public void crearCuenta() {
+	}
+
 }

@@ -23,7 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import controller.PanelTiendaPrincipalControlador;
-import events.PanelTiendaPrincipalEventos;
 import events.PrincipalEventos;
 import views.panels.PanelTiendaPrincipal;
 
@@ -67,12 +66,14 @@ public class FramePrincipal extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 
-				PanelTiendaPrincipalControlador pTPC = new PanelTiendaPrincipalControlador();
+				PanelTiendaPrincipalControlador pTPC = new PanelTiendaPrincipalControlador((FramePrincipal) getThis());
+
 				((PanelTiendaPrincipal) pTPC.getVista())
 						.setListaArticulos(evento.getDatos().getModelo().getArticulos());
 
 				getContentPane().add((Component) pTPC.initPanel());
-				((PanelTiendaPrincipalEventos) pTPC.getVista().getEvento()).setFrame((FramePrincipal) getThis());
+
+//				((PanelTiendaPrincipalEventos) pTPC.getVista().getEvento()).setFrame((FramePrincipal) getThis());
 
 				// FIXME no tengo ni idea de porque esto
 				JPanel panel = new JPanel();

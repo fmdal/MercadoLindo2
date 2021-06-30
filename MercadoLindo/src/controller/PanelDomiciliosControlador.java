@@ -1,27 +1,35 @@
 package controller;
 
 import events.Eventos;
+import views.frames.FramePrincipal;
 import views.panels.PanelIngDomicilios;
 
 public class PanelDomiciliosControlador extends ControladorPaneles {
 
-	public PanelDomiciliosControlador() {
-		// TODO Auto-generated constructor stub
+	public PanelDomiciliosControlador(FramePrincipal frame) {
+		vista = new PanelIngDomicilios(frame);
 	}
 
-	@Override
 	public Object initPanel() {
 
-		vista = new PanelIngDomicilios();
 		((Eventos) vista.getEvento()).setControl(this);
+
+		vista.init();
 		vista.setVisible(true);
 
 		return this.vista;
 	}
 
 //	metodos
-	
-	public void ingresarDomicilioOK(){}
-	public void aceptarDomicilios(){}
-	
+
+	public void ingresarDomicilioOK() {
+
+		System.out.println("Ingresamos el domicilio");
+	}
+
+	public void aceptarDomicilios() {
+
+		System.out.println("Aceptamos el domicilio");
+	}
+
 }

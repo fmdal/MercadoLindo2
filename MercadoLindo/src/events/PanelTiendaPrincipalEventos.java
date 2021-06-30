@@ -11,15 +11,11 @@ import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import controller.PanelCarritoControlador;
 import controller.PanelLogInControlador;
 import dominio.Articulo;
 import views.frames.FramePrincipal;
-import views.panels.PanelCarrito;
-import views.panels.PanelLogIn;
 import views.panels.PanelTiendaPrincipal;
 import views.panels.Paneles;
 
@@ -31,9 +27,9 @@ public class PanelTiendaPrincipalEventos extends Eventos {
 
 	private FramePrincipal frame;
 
-	public PanelTiendaPrincipalEventos(Paneles panel) {
+	public PanelTiendaPrincipalEventos(Paneles panel, FramePrincipal frame) {
 		super(panel);
-		// TODO Auto-generated constructor stub
+		this.frame = frame;
 	}
 
 	/**
@@ -52,68 +48,43 @@ public class PanelTiendaPrincipalEventos extends Eventos {
 			}
 
 		} else if (e.getSource().equals(((PanelTiendaPrincipal) this.panel).getBtnVerCarritoDeTienda())) {
-//
-//			if (frame.getEvento().getDatos().getModelo().getUsuario() == null) {
-//
-//				PanelLogIn ventana = new PanelLogIn();
-//				PanelLogInControlador control = new PanelLogInControlador(ventana);
-//				ventana.getEvento().setFrame(frame);
-//
-//				frame.getPanelContenedor().removeAll();
-//				frame.getPanelContenedor().repaint();
-//
-//				frame.getContentPane().add((Component) control.initPanel());
-//
-//				// FIXME no tengo ni idea de porque esto
-//				JPanel panel = new JPanel();
-//				frame.getContentPane().add(panel);
-//
-//			} else {
-			PanelCarrito carrito = new PanelCarrito();
-			PanelCarritoControlador carritoControlador = new PanelCarritoControlador(carrito);
 
-			frame.getPanelContenedor().removeAll();
-			frame.getPanelContenedor().repaint();
+			if (frame.getEvento().getDatos().getModelo().getUsuario() == null) {
 
-			frame.getContentPane().add((Component) carritoControlador.initPanel());
+				PanelLogInControlador control = new PanelLogInControlador(frame);
 
-			// FIXME no tengo ni idea de porque esto
-			JPanel panel = new JPanel();
-			frame.getContentPane().add(panel);
-//			}
+				frame.getPanelContenedor().removeAll();
+				frame.getPanelContenedor().repaint();
+
+				frame.getContentPane().add((Component) control.initPanel());
+
+				// FIXME no tengo ni idea de porque esto
+				JPanel panel = new JPanel();
+				frame.getContentPane().add(panel);
+
+			} else {
+				PanelCarritoControlador carritoControlador = new PanelCarritoControlador(frame);
+
+				frame.getPanelContenedor().removeAll();
+				frame.getPanelContenedor().repaint();
+
+				frame.getContentPane().add((Component) carritoControlador.initPanel());
+
+				// FIXME no tengo ni idea de porque esto
+				JPanel panel = new JPanel();
+				frame.getContentPane().add(panel);
+			}
 		} else if (e.getSource().equals(((PanelTiendaPrincipal) this.panel).getBtnBuscarArticulo())) {
-
 			ArrayList<Articulo> articuno = getVista().getListaArticulos();
 
 			List<Articulo> arts = articuno.stream()
 					.filter(a -> (a.getNombre().equalsIgnoreCase(getVista().getTextPane_buscar().getText()))).sorted()
 					.collect(Collectors.toList());
 
-			String[] columnas = { "Nombre", "Descripcion", "Categoria", "Cantidad", "Precio", "Agregar" };
-			DefaultTableModel tableModel = new DefaultTableModel(columnas, 0);
-
-			for (Articulo articulo : arts) {
-
-				Object[] data = { articulo.getNombre(), articulo.getDescripcion(), articulo.getCantidad(),
-						articulo.getCantidad(), articulo.getPrecio() };
-
-				tableModel.addRow(data);
-			}
-
-			JTable table = new JTable(tableModel);
-
-			table.setBounds(0, 0, 450, 214);
-
-			getVista().getScrollPane().setBounds(0, 0, 450, 214);
-			getVista().getScrollPane().add(table);
+			getVista().llenartela((ArrayList<Articulo>) arts);
 
 		} else if (e.getSource().equals(((PanelTiendaPrincipal) this.panel).getBtnLogIn())) {
-
-			System.out.println(1);
-
-			PanelLogIn ventana = new PanelLogIn();
-			PanelLogInControlador control = new PanelLogInControlador(ventana);
-			ventana.getEvento().setFrame(frame);
+			PanelLogInControlador control = new PanelLogInControlador(frame);
 
 			frame.getPanelContenedor().removeAll();
 			frame.getPanelContenedor().repaint();

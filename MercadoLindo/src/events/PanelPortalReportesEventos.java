@@ -2,6 +2,8 @@ package events;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+
 import views.frames.FramePrincipal;
 import views.panels.PanelPortalReportes;
 import views.panels.Paneles;
@@ -10,14 +12,19 @@ public class PanelPortalReportesEventos extends Eventos {
 
 	private FramePrincipal frame;
 
-	public PanelPortalReportesEventos(Paneles panel) {
+	public PanelPortalReportesEventos(Paneles panel, FramePrincipal frame) {
 		super(panel);
-		// TODO Auto-generated constructor stub
+		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(((PanelPortalReportes) this.panel).getBtnSalir())) {
+			int opcion = JOptionPane.showConfirmDialog(this.panel, "¿Seguro que desea salir?", "Salir",
+					JOptionPane.YES_NO_OPTION);
+			if (opcion == 0) {
+				System.exit(0);
+			}
 
 		} else if (e.getSource().equals(((PanelPortalReportes) this.panel).getBtnDescargar_Mayores10mil())) {
 

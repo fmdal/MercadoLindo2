@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import dominio.Articulo;
 import events.PanelTiendaPrincipalEventos;
+import views.frames.FramePrincipal;
 
 public class PanelTiendaPrincipal extends Paneles {
 
@@ -41,14 +42,14 @@ public class PanelTiendaPrincipal extends Paneles {
 
 	private JTable table;
 	private String[] columnas = { "Nombre", "Descripcion", "Categoria", "Cantidad", "Precio", "Agregar" };
-	private DefaultTableModel tableModel = new DefaultTableModel(columnas, 0);
+	private DefaultTableModel tableModel;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelTiendaPrincipal() {
+	public PanelTiendaPrincipal(FramePrincipal frame) {
 
-		evento = new PanelTiendaPrincipalEventos(this);
+		evento = new PanelTiendaPrincipalEventos(this, frame);
 
 		setLayout(null);
 	}
@@ -85,9 +86,28 @@ public class PanelTiendaPrincipal extends Paneles {
 		panelBotones.setBounds(10, 253, 450, 47);
 		panelBotones.setLayout(null);
 		panelBotones.add(btnSalir);
-		panelBotones.add(btnLogIn);
 
-		for (Articulo articulo : listaArticulos) {
+		if (((PanelTiendaPrincipalEventos) evento).getFrame().getEvento().getDatos().getModelo().getUsuario() == null) {
+			panelBotones.add(btnLogIn);
+		}
+
+		llenartela(listaArticulos);
+
+		panelCentral.setBounds(10, 40, 450, 214);
+		panelCentral.setLayout(null);
+
+		add(panelCentral);
+		add(panelBotones);
+		add(panelTituloTienda);
+
+		this.setVisible(true);
+	}
+
+	public void llenartela(ArrayList<Articulo> lista) {
+
+		tableModel = new DefaultTableModel(columnas, 0);
+
+		for (Articulo articulo : lista) {
 
 			Object[] data = { articulo.getNombre(), articulo.getDescripcion(), articulo.getCantidad(),
 					articulo.getCantidad(), articulo.getPrecio() };
@@ -102,14 +122,7 @@ public class PanelTiendaPrincipal extends Paneles {
 		scrollPane.add(table);
 
 		panelCentral.add(scrollPane);
-		panelCentral.setBounds(10, 40, 450, 214);
-		panelCentral.setLayout(null);
 
-		add(panelCentral);
-		add(panelBotones);
-		add(panelTituloTienda);
-
-		this.setVisible(true);
 	}
 
 	/**

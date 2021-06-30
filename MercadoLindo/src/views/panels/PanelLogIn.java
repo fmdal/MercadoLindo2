@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import events.PanelLogInEventos;
+import views.frames.FramePrincipal;
 
 public class PanelLogIn extends Paneles {
 
@@ -23,13 +24,13 @@ public class PanelLogIn extends Paneles {
 	private JPanel panelTituloLogIn = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-	
+
 	private JButton btnSalir = new JButton("Salir");
 	private JButton btnLogIn = new JButton("Iniciar Sesion");
-	
+
 	private JPasswordField passwordField = new JPasswordField();
 	private JTextPane textPane_dni = new JTextPane();
-	
+
 	private JLabel lblTituloLogIn = new JLabel("Iniciar Sesion - Mercado Lindo");
 	private JLabel lblContrasena = new JLabel("Contrase\u00F1a");
 	private JLabel lblUsuarioLogIn = new JLabel("DNI");
@@ -37,9 +38,9 @@ public class PanelLogIn extends Paneles {
 	/**
 	 * Create the panel.
 	 */
-	public PanelLogIn() {
+	public PanelLogIn(FramePrincipal frame) {
 		System.out.println(3);
-		evento = new PanelLogInEventos(this);
+		evento = new PanelLogInEventos(this, frame);
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
@@ -54,7 +55,7 @@ public class PanelLogIn extends Paneles {
 		lblUsuarioLogIn.setBounds(167, 66, 46, 22);
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(157, 99, 56, 22);
-		
+
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		panelTituloLogIn.setLayout(null);
 		panelCentral.setBounds(0, 40, 450, 214);
@@ -63,9 +64,9 @@ public class PanelLogIn extends Paneles {
 		panelBotones.setLayout(null);
 
 		textPane_dni.setBounds(220, 66, 119, 22);
-		
+
 		passwordField.setBounds(220, 99, 120, 22);
-		
+
 		btnLogIn.setBounds(230, 132, 95, 23);
 		btnLogIn.addActionListener(evento);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -79,7 +80,7 @@ public class PanelLogIn extends Paneles {
 		panelCentral.add(lblUsuarioLogIn);
 		panelCentral.add(lblContrasena);
 		panelCentral.add(btnLogIn);
-		
+
 		add(panelTituloLogIn);
 		add(panelCentral);
 		add(panelBotones);
@@ -88,7 +89,7 @@ public class PanelLogIn extends Paneles {
 	}
 
 //	Getters & Setters
-	
+
 	/**
 	 * @return the evento
 	 */
