@@ -17,18 +17,24 @@ public class PanelIngTarjetas extends Paneles {
 
 //	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
 
-	private JPanel panelIngTarjeta = new JPanel();
+	private final JLabel lblMarcaTarjeta = new JLabel("Marca de tarjeta");
+	private final JLabel lblTipoTarjeta = new JLabel("Tipo de tarjeta");
 	private JLabel lblTituloRegistrarse = new JLabel("Ingresar tarjetas - Mercado Lindo");
+	private JLabel lblNumeroTarjeta = new JLabel("Numero de tarjeta");
+	
+	private JPanel panelIngTarjeta = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
+	
+	private JComboBox comboBoxTipoTarjeta = new JComboBox();
+	
 	private final JButton btnSalirTarjeta = new JButton("Salir");
 	private final JButton btnAceptarTarjeta = new JButton("Aceptar");
 	private final JButton btnIngresarTarjetaOK = new JButton("Ingresar tarjeta");
 	private final JTextPane textPane_marcaTarjeta = new JTextPane();
 	private final JTextPane textPane_nroTarjeta = new JTextPane();
-	private final JLabel lblMarcaTarjeta = new JLabel("Marca de tarjeta");
-	private final JLabel lblTipoTarjeta = new JLabel("Tipo de tarjeta");
-	private JComboBox comboBoxTipoTarjeta = new JComboBox();
+	
+
 
 	/**
 	 * Create the panel.
@@ -37,65 +43,64 @@ public class PanelIngTarjetas extends Paneles {
 
 //		evento.setVista(this);
 		evento = new PanelTiendaPrincipalEventos(this);
-
+		
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
 
-		panelIngTarjeta.setBounds(0, 0, 450, 40);
-		add(panelIngTarjeta);
-		panelIngTarjeta.setLayout(null);
 		lblTituloRegistrarse.setBounds(10, 0, 198, 29);
-
 		lblTituloRegistrarse.setFont(new Font("Arial", Font.PLAIN, 12));
-		panelIngTarjeta.add(lblTituloRegistrarse);
-
-		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
-		panelBotones.setLayout(null);
-		btnSalirTarjeta.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalirTarjeta);
-		btnSalirTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
-		panelCentral.setLayout(null);
-
-		JTextPane textPane_nroTarjeta = new JTextPane();
-		textPane_nroTarjeta.setBounds(135, -1, 119, 22);
-		panelCentral.add(textPane_nroTarjeta);
-
-		JLabel lblNumeroTarjeta = new JLabel("Numero de tarjeta");
 		lblNumeroTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumeroTarjeta.setBounds(20, 0, 105, 22);
-		panelCentral.add(lblNumeroTarjeta);
-		btnAceptarTarjeta.setBounds(62, 132, 120, 23);
-		panelCentral.add(btnAceptarTarjeta);
-		btnIngresarTarjetaOK.addActionListener(evento);
-		btnIngresarTarjetaOK.setBounds(40, 98, 176, 23);
-
-		panelCentral.add(btnIngresarTarjetaOK);
-		textPane_marcaTarjeta.setBounds(135, 32, 119, 22);
-
-		panelCentral.add(textPane_marcaTarjeta);
 		lblMarcaTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarcaTarjeta.setBounds(20, 33, 105, 22);
-
-		panelCentral.add(lblMarcaTarjeta);
 		lblTipoTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipoTarjeta.setBounds(20, 65, 105, 22);
 
-		panelCentral.add(lblTipoTarjeta);
+		panelIngTarjeta.setBounds(0, 0, 450, 40);
+		panelIngTarjeta.setLayout(null);
+		panelIngTarjeta.add(lblTituloRegistrarse);
+		panelBotones.setBounds(0, 253, 450, 47);
+		panelBotones.setLayout(null);
+		panelCentral.setBounds(0, 40, 450, 214);
+		panelCentral.setLayout(null);
 
-		JComboBox comboBoxTipoTarjeta = new JComboBox();
-		comboBoxTipoTarjeta.setBounds(135, 65, 119, 22);
+		textPane_nroTarjeta.setBounds(135, -1, 119, 22);
+		textPane_marcaTarjeta.setBounds(135, 32, 119, 22);
+
+		panelBotones.add(btnSalirTarjeta);
+		panelCentral.add(textPane_nroTarjeta);
+		panelCentral.add(lblNumeroTarjeta);
+		panelCentral.add(btnAceptarTarjeta);
+		panelCentral.add(btnIngresarTarjetaOK);
+		panelCentral.add(textPane_marcaTarjeta);
+		panelCentral.add(lblMarcaTarjeta);
+		panelCentral.add(lblTipoTarjeta);
 		panelCentral.add(comboBoxTipoTarjeta);
+		
+		comboBoxTipoTarjeta.setBounds(135, 65, 119, 22);
+		
 		comboBoxTipoTarjeta.addItem("Credito");
 		comboBoxTipoTarjeta.addItem("Debito");
 		comboBoxTipoTarjeta.addItem("Prepaga");
+		
+		btnSalirTarjeta.setBounds(387, 11, 53, 23);
+		btnSalirTarjeta.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSalirTarjeta.addActionListener(evento);
+		btnAceptarTarjeta.setBounds(62, 132, 120, 23);
+		btnAceptarTarjeta.addActionListener(evento);
+		btnIngresarTarjetaOK.addActionListener(evento);
+		btnIngresarTarjetaOK.setBounds(40, 98, 176, 23);
+		
+		add(panelIngTarjeta);
+		add(panelBotones);
+		add(panelCentral);
+		
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
+//	Getters & Setters
+	
 	/**
 	 * @return the evento
 	 */

@@ -15,19 +15,25 @@ import events.PanelTiendaPrincipalEventos;
 public class PanelIngDomicilios extends Paneles {
 
 	private JPanel panelTituloLogIn = new JPanel();
-	private JLabel lblTituloIngDomicilios = new JLabel("Ingresar domicilios - Mercado Lindo");
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
+	
+	private JLabel lblTituloIngDomicilios = new JLabel("Ingresar domicilios - Mercado Lindo");
+	
+	private JLabel lblCalle = new JLabel("Calle");
+	private JLabel lblNumero = new JLabel("Numero");
+	private JLabel lblCodigoPostal = new JLabel("Codigo postal");
+	private JLabel lblLocalidad = new JLabel("Localidad");
+	
 	private final JButton btnSalir = new JButton("Salir");
 	private final JButton btnAceptarDomicilios = new JButton("Aceptar");
 	private final JButton btnIngresarDomicilioOK = new JButton("Ingresar domicilio");
-	private final JLabel lblNumero = new JLabel("Numero");
-	private final JLabel lblCodigoPostal = new JLabel("Codigo postal");
+	
 	private final JTextPane textPane_codigoPostal = new JTextPane();
 	private final JTextPane textPane_localidad = new JTextPane();
 	private final JTextPane textPane_numero = new JTextPane();
-	private final JTextPane textPane_calle = new JTextPane();
-	private final JLabel lblLocalidad = new JLabel("Localidad");
+	private final JTextPane textPane_Calle = new JTextPane();
+	
 
 	/**
 	 * Create the panel.
@@ -39,66 +45,62 @@ public class PanelIngDomicilios extends Paneles {
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-
-		panelTituloLogIn.setBounds(0, 0, 450, 40);
-		add(panelTituloLogIn);
-		panelTituloLogIn.setLayout(null);
+		
 		lblTituloIngDomicilios.setBounds(10, 0, 198, 29);
-
 		lblTituloIngDomicilios.setFont(new Font("Arial", Font.PLAIN, 12));
-		panelTituloLogIn.add(lblTituloIngDomicilios);
-
-		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
-		panelBotones.setLayout(null);
-		btnSalir.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalir);
-		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
-		panelCentral.setLayout(null);
-
-		JTextPane textPane_Calle = new JTextPane();
-		textPane_Calle.setBounds(135, -1, 119, 22);
-		panelCentral.add(textPane_Calle);
-
-		JLabel lblCalle = new JLabel("Calle");
-		lblCalle.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCalle.setBounds(20, 0, 105, 22);
-		panelCentral.add(lblCalle);
-		btnAceptarDomicilios.addActionListener(evento);
-		btnAceptarDomicilios.setBounds(112, 180, 120, 23);
-		panelCentral.add(btnAceptarDomicilios);
-		btnIngresarDomicilioOK.addActionListener(evento);
-		btnIngresarDomicilioOK.setBounds(78, 146, 176, 23);
-
-		panelCentral.add(btnIngresarDomicilioOK);
-		textPane_numero.setBounds(135, 32, 119, 22);
-
-		panelCentral.add(textPane_numero);
 		lblNumero.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumero.setBounds(20, 33, 105, 22);
-
-		panelCentral.add(lblNumero);
 		lblCodigoPostal.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigoPostal.setBounds(20, 65, 105, 22);
-
-		panelCentral.add(lblCodigoPostal);
-		textPane_codigoPostal.setBounds(135, 65, 119, 22);
-
-		panelCentral.add(textPane_codigoPostal);
-		textPane_localidad.setBounds(135, 98, 119, 22);
-
-		panelCentral.add(textPane_localidad);
 		lblLocalidad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLocalidad.setBounds(20, 98, 105, 22);
+		lblCalle.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCalle.setBounds(20, 0, 105, 22);
 
+		panelTituloLogIn.setBounds(0, 0, 450, 40);
+		panelTituloLogIn.setLayout(null);
+		panelBotones.setBounds(0, 253, 450, 47);
+		panelBotones.setLayout(null);
+		
+		panelCentral.setBounds(0, 40, 450, 214);
+		panelCentral.setLayout(null);
+		
+		btnSalir.addActionListener(evento);
+		btnSalir.setBounds(387, 11, 53, 23);
+		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnAceptarDomicilios.addActionListener(evento);
+		btnAceptarDomicilios.setBounds(112, 180, 120, 23);
+		btnIngresarDomicilioOK.addActionListener(evento);
+		btnIngresarDomicilioOK.setBounds(78, 146, 176, 23);
+		
+		textPane_Calle.setBounds(135, -1, 119, 22);
+		textPane_numero.setBounds(135, 32, 119, 22);
+		textPane_codigoPostal.setBounds(135, 65, 119, 22);	
+		textPane_localidad.setBounds(135, 98, 119, 22);
+		
+		panelTituloLogIn.add(lblTituloIngDomicilios);
+		panelBotones.add(btnSalir);
+		panelCentral.add(btnAceptarDomicilios);
+		panelCentral.add(btnIngresarDomicilioOK);
+		panelCentral.add(lblCalle);
+		panelCentral.add(lblNumero);
+		panelCentral.add(lblCodigoPostal);
 		panelCentral.add(lblLocalidad);
+		panelCentral.add(textPane_Calle);
+		panelCentral.add(textPane_numero);
+		panelCentral.add(textPane_codigoPostal);
+		panelCentral.add(textPane_localidad);
+		
+		add(panelTituloLogIn);
+		add(panelBotones);
+		add(panelCentral);
+		
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
+//	Getters & Setters
+	
 	/**
 	 * @return the evento
 	 */
@@ -268,9 +270,51 @@ public class PanelIngDomicilios extends Paneles {
 	}
 
 	/**
+	 * @return el dato de lblCalle
+	 */
+	public JLabel getLblCalle() {
+		return lblCalle;
+	}
+
+	/**
+	 * @param lblCalle para cargar en lblCalle
+	 */
+	public void setLblCalle(JLabel lblCalle) {
+		this.lblCalle = lblCalle;
+	}
+
+	/**
+	 * @return el dato de textPane_numero
+	 */
+	public JTextPane getTextPane_numero() {
+		return textPane_numero;
+	}
+
+	/**
 	 * @return el dato de textPane_Calle
 	 */
 	public JTextPane getTextPane_Calle() {
-		return textPane_calle;
+		return textPane_Calle;
+	}
+
+	/**
+	 * @param lblNumero para cargar en lblNumero
+	 */
+	public void setLblNumero(JLabel lblNumero) {
+		this.lblNumero = lblNumero;
+	}
+
+	/**
+	 * @param lblCodigoPostal para cargar en lblCodigoPostal
+	 */
+	public void setLblCodigoPostal(JLabel lblCodigoPostal) {
+		this.lblCodigoPostal = lblCodigoPostal;
+	}
+
+	/**
+	 * @param lblLocalidad para cargar en lblLocalidad
+	 */
+	public void setLblLocalidad(JLabel lblLocalidad) {
+		this.lblLocalidad = lblLocalidad;
 	}
 }

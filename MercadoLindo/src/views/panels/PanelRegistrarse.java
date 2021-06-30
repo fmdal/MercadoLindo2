@@ -22,17 +22,19 @@ public class PanelRegistrarse extends Paneles {
 	private JPanel panelCentral = new JPanel();
 
 	private JLabel lblTituloRegistrarse = new JLabel("Registrarse - Mercado Lindo");
+	private JLabel lblDniLogIn = new JLabel("DNI");
+	private JLabel lblContrasena = new JLabel("Contrase\u00F1a");
 	private final JLabel lblNombre = new JLabel("Nombre");
 	private final JLabel lblApellido = new JLabel("Apellido");
 
-	private final JButton btnSalir = new JButton("Salir");
-	private final JButton btnCrearCuenta = new JButton("Crear Cuenta");
-
 	private JPasswordField passwordField;
+	
 	private final JTextPane textPane_nombre = new JTextPane();
 	private final JTextPane textPane_apellido = new JTextPane();
 	private final JTextPane textPane_dni = new JTextPane();
-
+	
+	private final JButton btnSalir = new JButton("Salir");
+	private final JButton btnCrearCuenta = new JButton("Crear Cuenta");
 	private final JButton btnIngDomicilios = new JButton("Ingresar Domicilios");
 	private final JButton btnIngresarTarjetas = new JButton("Ingresar tarjetas");
 
@@ -47,68 +49,67 @@ public class PanelRegistrarse extends Paneles {
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
 
-		panelTituloLogIn.setBounds(0, 0, 450, 40);
-		add(panelTituloLogIn);
-		panelTituloLogIn.setLayout(null);
 		lblTituloRegistrarse.setBounds(10, 0, 188, 29);
-
 		lblTituloRegistrarse.setFont(new Font("Arial", Font.PLAIN, 12));
-		panelTituloLogIn.add(lblTituloRegistrarse);
-
-		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
-		panelBotones.setLayout(null);
-		btnSalir.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalir);
-		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
-		panelCentral.setLayout(null);
-
-		passwordField = new JPasswordField();
-		passwordField.setBounds(76, 32, 120, 22);
-		panelCentral.add(passwordField);
-
-		JTextPane textPane_dni = new JTextPane();
-		textPane_dni.setBounds(76, 0, 119, 22);
-		panelCentral.add(textPane_dni);
-
-		JLabel lblDniLogIn = new JLabel("DNI");
 		lblDniLogIn.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDniLogIn.setBounds(20, 0, 46, 22);
-		panelCentral.add(lblDniLogIn);
-
-		JLabel lblContrasena = new JLabel("Contrase\u00F1a");
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(10, 32, 56, 22);
-		panelCentral.add(lblContrasena);
-		btnCrearCuenta.setBounds(49, 191, 120, 23);
-		panelCentral.add(btnCrearCuenta);
-		textPane_nombre.setBounds(76, 65, 119, 22);
-
-		panelCentral.add(textPane_nombre);
-		textPane_apellido.setBounds(76, 98, 119, 22);
-
-		panelCentral.add(textPane_apellido);
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(10, 65, 56, 22);
-
-		panelCentral.add(lblNombre);
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setBounds(10, 98, 56, 22);
+		
+		panelTituloLogIn.setBounds(0, 0, 450, 40);
+		panelTituloLogIn.setLayout(null);
+		
+		panelBotones.setBounds(0, 253, 450, 47);
+		panelBotones.setLayout(null);
 
-		panelCentral.add(lblApellido);
+		panelCentral.setBounds(0, 40, 450, 214);
+		panelCentral.setLayout(null);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(76, 32, 120, 22);
+
+		textPane_dni.setBounds(76, 0, 119, 22);
+		textPane_nombre.setBounds(76, 65, 119, 22);
+		textPane_apellido.setBounds(76, 98, 119, 22);
+	
+		btnSalir.setBounds(387, 11, 53, 23);
+		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSalir.addActionListener(evento);
+		btnCrearCuenta.setBounds(49, 191, 120, 23);
+		btnCrearCuenta.addActionListener(evento);
 		btnIngDomicilios.setBounds(20, 159, 176, 23);
-
-		panelCentral.add(btnIngDomicilios);
+		btnIngDomicilios.addActionListener(evento);
 		btnIngresarTarjetas.setBounds(20, 130, 176, 23);
-
+		btnIngresarTarjetas.addActionListener(evento);
+		
+		panelTituloLogIn.add(lblTituloRegistrarse);
+		panelBotones.add(btnSalir);
+		panelCentral.add(passwordField);
+		panelCentral.add(textPane_dni);
+		panelCentral.add(lblDniLogIn);
+		panelCentral.add(lblContrasena);
+		panelCentral.add(textPane_nombre);
+		panelCentral.add(textPane_apellido);
+		panelCentral.add(lblNombre);
+		panelCentral.add(lblApellido);
+		panelCentral.add(btnCrearCuenta);
+		panelCentral.add(btnIngDomicilios);
 		panelCentral.add(btnIngresarTarjetas);
+		
+		add(panelTituloLogIn);
+		add(panelBotones);
+		add(panelCentral);
+		
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
+//	Getters & Setters
+	
 	/**
 	 * @return the evento
 	 */

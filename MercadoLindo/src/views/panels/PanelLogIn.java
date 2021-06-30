@@ -23,10 +23,13 @@ public class PanelLogIn extends Paneles {
 	private JPanel panelTituloLogIn = new JPanel();
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
+	
 	private JButton btnSalir = new JButton("Salir");
 	private JButton btnLogIn = new JButton("Iniciar Sesion");
+	
 	private JPasswordField passwordField = new JPasswordField();
 	private JTextPane textPane_dni = new JTextPane();
+	
 	private JLabel lblTituloLogIn = new JLabel("Iniciar Sesion - Mercado Lindo");
 	private JLabel lblContrasena = new JLabel("Contrase\u00F1a");
 	private JLabel lblUsuarioLogIn = new JLabel("DNI");
@@ -40,7 +43,6 @@ public class PanelLogIn extends Paneles {
 
 		setBorder(new LineBorder(SystemColor.desktop));
 		setLayout(null);
-
 	}
 
 	@Override
@@ -48,41 +50,36 @@ public class PanelLogIn extends Paneles {
 
 		lblTituloLogIn.setBounds(10, 0, 171, 29);
 		lblTituloLogIn.setFont(new Font("Arial", Font.PLAIN, 12));
-
-		panelTituloLogIn.add(lblTituloLogIn);
+		lblUsuarioLogIn.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblUsuarioLogIn.setBounds(167, 66, 46, 22);
+		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblContrasena.setBounds(157, 99, 56, 22);
+		
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
 		panelTituloLogIn.setLayout(null);
+		panelCentral.setBounds(0, 40, 450, 214);
+		panelCentral.setLayout(null);
+		panelBotones.setBounds(0, 253, 450, 47);
+		panelBotones.setLayout(null);
 
+		textPane_dni.setBounds(220, 66, 119, 22);
+		
+		passwordField.setBounds(220, 99, 120, 22);
+		
+		btnLogIn.setBounds(230, 132, 95, 23);
+		btnLogIn.addActionListener(evento);
 		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnSalir.setBounds(387, 11, 53, 23);
 		btnSalir.addActionListener(evento);
 
+		panelTituloLogIn.add(lblTituloLogIn);
 		panelBotones.add(btnSalir);
-		panelBotones.setBounds(0, 253, 450, 47);
-		panelBotones.setLayout(null);
-
-		passwordField.setBounds(220, 99, 120, 22);
-
-		panelCentral.setBounds(0, 40, 450, 214);
-		panelCentral.setLayout(null);
 		panelCentral.add(passwordField);
-
-		textPane_dni.setBounds(220, 66, 119, 22);
-
-		lblUsuarioLogIn.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUsuarioLogIn.setBounds(167, 66, 46, 22);
-
-		btnLogIn.setBounds(230, 132, 95, 23);
-		btnLogIn.addActionListener(evento);
-
-		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblContrasena.setBounds(157, 99, 56, 22);
-
 		panelCentral.add(textPane_dni);
 		panelCentral.add(lblUsuarioLogIn);
 		panelCentral.add(lblContrasena);
 		panelCentral.add(btnLogIn);
-
+		
 		add(panelTituloLogIn);
 		add(panelCentral);
 		add(panelBotones);
@@ -90,6 +87,8 @@ public class PanelLogIn extends Paneles {
 		this.setVisible(true);
 	}
 
+//	Getters & Setters
+	
 	/**
 	 * @return the evento
 	 */

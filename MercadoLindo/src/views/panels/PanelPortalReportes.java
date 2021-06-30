@@ -19,25 +19,24 @@ public class PanelPortalReportes extends Paneles {
 //	private PanelTiendaPrincipalEventos evento = new PanelTiendaPrincipalEventos(this);
 
 	private JPanel panelTituloLogIn = new JPanel();
-
 	private JPanel panelBotones = new JPanel();
 	private JPanel panelCentral = new JPanel();
-
+	
 	private JLabel lblTituloReportes = new JLabel("Portal Reportes - Mercado Lindo");
+	private JLabel lblMayores10mil = new JLabel(
+			"<html>Obtener el nombre y dni de los clientes que realizaron compras por m\u00E1s de $10.000</html>");
 	private final JLabel lblMasVendido = new JLabel(
 			"<html>Obtener el art\u00EDculo m\u00E1s comercializado  a partir del nombre de una empresa:</html>");
 	private final JLabel lblUltimas5Compras = new JLabel(
 			"<html>A partir del dni de un cliente, obtener las \u00FAltimas 5 compras realizadas mostrando:  </html>");
 
 	private final JButton btnSalir = new JButton("Salir");
-
 	private final JButton btnDescargar_Mayores10mil = new JButton("Descargar reporte");
-
-	private final JTextPane textPane_MasVendido = new JTextPane();
 	private final JButton btnDescargar_MasVendido = new JButton("Descargar");
-
-	private final JTextPane textPane_Ultimas5Compras = new JTextPane();
 	private final JButton btnDescargar_Ultimas5Compras = new JButton("Descargar");
+	
+	private final JTextPane textPane_MasVendido = new JTextPane();
+	private final JTextPane textPane_Ultimas5Compras = new JTextPane();
 
 	/**
 	 * Create the panel.
@@ -51,63 +50,58 @@ public class PanelPortalReportes extends Paneles {
 		setLayout(null);
 
 		panelTituloLogIn.setBounds(0, 0, 450, 40);
-		add(panelTituloLogIn);
 		panelTituloLogIn.setLayout(null);
-		lblTituloReportes.setBounds(10, 0, 303, 29);
-
-		lblTituloReportes.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelTituloLogIn.add(lblTituloReportes);
-
 		panelBotones.setBounds(0, 253, 450, 47);
-		add(panelBotones);
 		panelBotones.setLayout(null);
-		btnSalir.setBounds(387, 11, 53, 23);
-		panelBotones.add(btnSalir);
-		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
-
 		panelCentral.setBounds(0, 40, 450, 214);
-		add(panelCentral);
 		panelCentral.setLayout(null);
-
-		JLabel lblMayores10mil = new JLabel(
-				"<html>Obtener el nombre y dni de los clientes que realizaron compras por m\u00E1s de $10.000</html>");
+		
+		lblTituloReportes.setBounds(10, 0, 303, 29);
+		lblTituloReportes.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblMayores10mil.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMayores10mil.setBounds(10, 11, 224, 75);
-		panelCentral.add(lblMayores10mil);
-		btnDescargar_Mayores10mil.addActionListener(evento);
-		btnDescargar_Mayores10mil.setBounds(244, 30, 130, 23);
-		panelCentral.add(btnDescargar_Mayores10mil);
 		lblMasVendido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMasVendido.setBounds(10, 49, 224, 75);
-
-		panelCentral.add(lblMasVendido);
-		textPane_MasVendido.setBounds(244, 74, 115, 22);
-
-		panelCentral.add(textPane_MasVendido);
 		lblUltimas5Compras.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUltimas5Compras.setBounds(10, 89, 224, 75);
 
-		panelCentral.add(lblUltimas5Compras);
-		textPane_Ultimas5Compras.setBounds(244, 118, 115, 22);
-
-		panelCentral.add(textPane_Ultimas5Compras);
-
-		JButton btnDescargar_MasVendido = new JButton("Descargar");
-		btnDescargar_MasVendido.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnSalir.setBounds(387, 11, 53, 23);
+		btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSalir.addActionListener(evento);
+		
+		btnDescargar_Mayores10mil.addActionListener(evento);
+		btnDescargar_Mayores10mil.setBounds(244, 30, 130, 23);
+		
 		btnDescargar_MasVendido.setBounds(369, 73, 81, 23);
-		panelCentral.add(btnDescargar_MasVendido);
-
-		JButton btnDescargar_Ultimas5Compras = new JButton("Descargar");
+		btnDescargar_MasVendido.addActionListener(evento);
+		
+		btnDescargar_Ultimas5Compras.addActionListener(evento);
 		btnDescargar_Ultimas5Compras.setBounds(369, 117, 81, 23);
+		
+		textPane_MasVendido.setBounds(244, 74, 115, 22);
+		textPane_Ultimas5Compras.setBounds(244, 118, 115, 22);
+	
+		panelCentral.add(lblMayores10mil);
+		panelCentral.add(btnDescargar_Mayores10mil);
+		panelCentral.add(lblMasVendido);
+		panelCentral.add(textPane_MasVendido);
+		panelCentral.add(lblUltimas5Compras);
+		panelCentral.add(textPane_Ultimas5Compras);
+		panelCentral.add(btnDescargar_MasVendido);
 		panelCentral.add(btnDescargar_Ultimas5Compras);
+		panelBotones.add(btnSalir);
+		
+		add(panelTituloLogIn);
+		add(panelBotones);
+		add(panelCentral);
+		
 //		System.out.println("esto");
 		this.setVisible(true);
 	}
 
+//	Getters & Setters
+	
 	/**
 	 * @return the evento
 	 */
