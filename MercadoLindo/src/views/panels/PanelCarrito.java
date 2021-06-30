@@ -1,23 +1,36 @@
 package views.panels;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
+import dominio.DemoPrincipal;
+import controller.PanelTiendaPrincipalControlador;
+import dominio.Articulo;
+import dominio.Cliente;
+import dominio.Usuario;
 import events.PanelCarritoEventos;
 import views.frames.FramePrincipal;
 
 // ActionListener es "evento", que es el que declaramos en el new
 
 public class PanelCarrito extends Paneles {
-
+	
+	private ArrayList<Articulo> listaArticulos;
+	private ArrayList<Cliente> listaUsuarios;
 	private JPanel panelBotonesMiCarrito = new JPanel();
 	private JPanel panelCentralMiCarrito = new JPanel();
 	private JPanel panelTituloMiCarrito = new JPanel();
@@ -30,7 +43,10 @@ public class PanelCarrito extends Paneles {
 	private JButton btnVolverAlaTienda = new JButton("volver a la Tienda");
 	private JButton btnCambiarTarjeta = new JButton("Cambiar tarjeta");
 	private JButton btnVaciarCarrito = new JButton("Vaciar carrito");
-
+	private String[] columnas = { "Nombre" };
+	private DefaultTableModel tableModel;
+	private long dni;
+	private ArrayList<Cliente> d;
 	/**
 	 * Create the panel.
 	 */
@@ -83,15 +99,44 @@ public class PanelCarrito extends Paneles {
 		panelBotonesMiCarrito.add(btnVaciarCarrito);
 		panelBotonesMiCarrito.add(btnCambiarDomicilio);
 		panelCentralMiCarrito.add(scrollPane);
-
 		scrollPane.setBounds(10, 0, 450, 214);
-
+		dni = ((PanelCarritoEventos) evento).getFrame().getEvento().getDatos().getModelo().getUsuario().getDni();
+		listaUsuarios = ((PanelCarritoEventos) evento).getFrame().getEvento().getDatos().getModelo().getClientes();
+		llenarTabla(dni);
 		table.setBounds(0, 0, 450, 214);
 		scrollPane.add(table);
 
 		add(panelTituloMiCarrito);
 		add(panelCentralMiCarrito);
 		add(panelBotonesMiCarrito);
+	}
+	
+	
+	public void llenarTabla(long dni) {
+		tableModel = new DefaultTableModel(columnas, 0);
+		System.out.println("USUARIOSSSSSS "+listaUsuarios);
+		for (Cliente u : listaUsuarios) {
+			if (u.getDni()==dni) {
+				if (((Usuario)u).getUsuarioCarrito()==null) {
+					JOptionPane.showMessageDialog(null, "No posee articulos en su carrito");
+				} else {
+					((Usuario)u).getUsuarioCarrito().getListaArticulos(); 
+					for (int i =0; i<((Usuario)u).getUsuarioCarrito().getListaArticulos().size(); i++){
+	
+						Object[] data = { ((Usuario)u).getUsuarioCarrito().getListaArticulos().get(i).getNombre() };
+						tableModel.addRow(data);
+					}
+				}
+			}
+		}
+		table = new JTable(tableModel);
+		table.setBounds(0, 0, 450, 214);
+
+		scrollPane.setBounds(0, 0, 450, 214);
+		scrollPane.add(table);
+
+		panelCentralMiCarrito.add(scrollPane);
+
 	}
 
 //	Getters & Setters
@@ -299,5 +344,29 @@ public class PanelCarrito extends Paneles {
 	 */
 	public JButton getBtnVaciarCarrito() {
 		return btnVaciarCarrito;
+	}
+	/**
+	 * @return el dato de listaArticulos
+	 */
+	public ArrayList<Articulo> getListaArticulos() {
+		return listaArticulos;
+	}
+
+	/**
+	 * @param listaArticulos para cargar en listaArticulos
+	 */
+	public void setListaArticulos(ArrayList<Articulo> listaArticulos) {
+		this.listaArticulos = listaArticulos;
+	}
+	
+	public ArrayList<Cliente> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaArticulos para cargar en listaArticulos
+	 */
+	public void setListaUsuarios(ArrayList<Cliente> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 }

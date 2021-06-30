@@ -2,16 +2,23 @@ package events;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.PanelCarritoControlador;
 import controller.PanelDomiciliosControlador;
+import controller.PanelLogInControlador;
 import controller.PanelTarjetasControlador;
 import controller.PanelTiendaPrincipalControlador;
+import dominio.Articulo;
+import dominio.Cliente;
 import views.frames.FramePrincipal;
 import views.panels.PanelCarrito;
+import views.panels.PanelLogIn;
 import views.panels.PanelTiendaPrincipal;
 import views.panels.Paneles;
 
@@ -26,6 +33,7 @@ public class PanelCarritoEventos extends Eventos {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource().equals(((PanelCarrito) this.panel).getBtnSalirMiCarrito())) {
 			int opcion = JOptionPane.showConfirmDialog(this.panel, "¿Seguro que desea salir?", "Salir",
 					JOptionPane.YES_NO_OPTION);
@@ -34,6 +42,7 @@ public class PanelCarritoEventos extends Eventos {
 			}
 
 		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnComprarCarrito())) {
+			
 			((PanelCarritoControlador) control).comprarCarrito();
 		} else if (e.getSource().equals(((PanelCarrito) this.panel).getBtnCambiarDomicilio())) {
 
@@ -52,8 +61,7 @@ public class PanelCarritoEventos extends Eventos {
 			PanelTiendaPrincipalControlador contol = new PanelTiendaPrincipalControlador(frame);
 
 			((PanelTiendaPrincipal) contol.getVista())
-					.setListaArticulos(frame.getEvento().getDatos().getModelo().getArticulos());
-
+					.setListaArticulos(frame.getEvento().getDatos().getModelo().getArticulos());		
 			frame.getPanelContenedor().removeAll();
 			frame.getPanelContenedor().repaint();
 
@@ -99,5 +107,11 @@ public class PanelCarritoEventos extends Eventos {
 	/**
 	 * Create the panel.
 	 */
+	public PanelCarrito getVista() {
+		return (PanelCarrito) panel;
+	}
 
+	public void setVista(PanelCarrito vista) {
+		this.panel = vista;
+	}
 }

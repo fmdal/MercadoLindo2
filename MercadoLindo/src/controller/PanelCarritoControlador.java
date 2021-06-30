@@ -26,6 +26,7 @@ public class PanelCarritoControlador extends ControladorPaneles {
 	}
 
 	public void vaciarCarrito() {
+		
 		System.out.println("Vaciamos el carrito");
 	}
 
